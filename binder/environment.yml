@@ -1,0 +1,10 @@
+name: biobb_dna_helparms_tutorial
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - biobb_dna
+  - matplotlib
+  - conda
+  - ipywidgets
+  - ipykernel
