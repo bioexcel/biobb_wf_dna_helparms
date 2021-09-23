@@ -1,0 +1,11 @@
+name: biobb_dna_curves_tutorial
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - biobb_dna
+  - nb_conda_kernels
+  - matplotlib
+  - conda
+  - ipywidgets
+  - ipykernel
