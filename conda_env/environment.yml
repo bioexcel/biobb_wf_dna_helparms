@@ -1,4 +1,4 @@
-name: biobb_dna_curves_tutorial
+name: biobb_dna_helparms_tutorial
 channels:
   - conda-forge
   - bioconda
