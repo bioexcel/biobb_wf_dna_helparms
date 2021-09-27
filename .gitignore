@@ -10,10 +10,15 @@ guidelines.md
 *.xvg
 *.offsets
 *.cpt
+*.csv
+*.cda
+*.lis
 log*.*
 !logo.png
 .ipynb_checkpoints/
-biobb_wf_dna_helparms/notebooks/*.png
+biobb_wf_dna_helparms/notebooks/*/
+!biobb_wf_dna_helparms/notebooks/TRAJ/
+biobb_wf_dna_helparms/notebooks/*.jpg
 biobb_wf_dna_helparms/notebooks/*.gif
 biobb_wf_dna_helparms/notebooks/*.web.ipynb
 biobb_wf_dna_helparms/notebooks/*.docs.ipynb
