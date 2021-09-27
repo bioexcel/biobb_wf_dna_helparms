@@ -7,8 +7,8 @@
 
 .. image:: https://bioexcel.eu/wp-content/uploads/2019/04/Bioexcell_logo_1080px_transp.png
 
-Protein MD Setup tutorial
--------------------------
+Structural DNA helical parameters from MD trajectory tutorial
+--------------------------------------------------------------
 
 Contents
 ========

@@ -34,21 +34,21 @@ jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb
  1. [Input Parameters](#input)
  2. [Running Curves+ and Canal](#curves)
  3. [Average Helical Parameters](#averages)
-   1. [Base Pair Step (Inter Base Pair) Parameters](#avg_bps)
-   2. [Base Pair (Intra Base Pair) Parameters](#avg_bp)
-   3. [Axis Parameters](#avg_axis)
-   4. [Grooves](#avg_grooves)
-   5. [Backbone Torsions](#avg_backbone)
+     1. [Base Pair Step (Inter Base Pair) Parameters](#avg_bps)
+     2. [Base Pair (Intra Base Pair) Parameters](#avg_bp)
+     3. [Axis Parameters](#avg_axis)
+     4. [Grooves](#avg_grooves)
+     5. [Backbone Torsions](#avg_backbone)
  8. [Time Series Helical Parameters](#timeseries)
  8. [Stiffness](#stiffness)
  9. [Bimodality](#bimodality)
  10. [Correlations](#correlations)
-   1. [Sequence Correlations: Intra-base pairs](#intrasequencecorrelation)
-   2. [Sequence Correlations: Inter-base pair steps](#intersequencecorrelation)
-   3. [Helical Parameter Correlations: Intra-base pairs](#intrahelparcorrelation)
-   4. [Helical Parameter Correlations: Inter-base pair steps](#interhelparcorrelation)
-   5. [Neighboring steps Correlations: Intra-base pairs](#intrabasepaircorrelation)
-   6. [Neighboring steps Correlations: Inter-base pair steps](#interbasepaircorrelation)
+     1. [Sequence Correlations: Intra-base pairs](#intrasequencecorrelation)
+     2. [Sequence Correlations: Inter-base pair steps](#intersequencecorrelation)
+     3. [Helical Parameter Correlations: Intra-base pairs](#intrahelparcorrelation)
+     4. [Helical Parameter Correlations: Inter-base pair steps](#interhelparcorrelation)
+     5. [Neighboring steps Correlations: Intra-base pairs](#intrabasepaircorrelation)
+     6. [Neighboring steps Correlations: Inter-base pair steps](#interbasepaircorrelation)
  11. [Questions & Comments](#questions)
  
 ***
@@ -196,7 +196,8 @@ with zipfile.ZipFile(canal_out, 'r') as zip_ref:
 ```
 
 <a id="averages"></a>
-# Extracting Average Helical Parameters
+
+## Extracting Average Helical Parameters
 
 **Average helical parameter** values can be computed from the output of **Curves+/Canal** execution. 
 
@@ -210,7 +211,8 @@ The **helical parameters** can be divided in 5 main blocks:
 
 
 <a id="avg_bps"></a>
-## Helical Base Pair Step (Inter Base Pair) Parameters
+
+### Helical Base Pair Step (Inter Base Pair) Parameters
 
 **Translational (Shift, Slide, Rise)** and **rotational (Tilt, Roll, Twist)** parameters related to a **dinucleotide Inter-Base Pair** (Base Pair Step).
 
@@ -229,7 +231,7 @@ The **helical parameters** can be divided in 5 main blocks:
 - [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
 ***
 
-### Extracting a particular Helical Parameter: Rise
+#### Extracting a particular Helical Parameter: Rise
 
 
 ```python
@@ -253,7 +255,7 @@ helparaverages(
     properties=prop)
 ```
 
-### Showing the calculated average values for Rise helical parameter
+#### Showing the calculated average values for Rise helical parameter
 
 
 ```python
@@ -349,7 +351,7 @@ df
 
 
 
-### Plotting the average values for Rise helical parameter 
+#### Plotting the average values for Rise helical parameter 
 
 
 ```python
@@ -360,12 +362,12 @@ Image(filename=output_averages_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_18_0.jpg)
+![jpeg](output_18_0.jpg)
     
 
 
 
-### Computing average values from all base-pair step parameters
+#### Computing average values from all base-pair step parameters
 
 
 ```python
@@ -389,7 +391,7 @@ for helpar in base_pair_step:
         properties=prop)
 ```
 
-### Showing the calculated average values for all base-pair step helical parameters
+#### Showing the calculated average values for all base-pair step helical parameters
 
 
 ```python
@@ -401,7 +403,7 @@ for helpar in base_pair_step:
     print("---------\n")
 ```
 
-### Plotting the average values for all base-pair step helical parameters 
+#### Plotting the average values for all base-pair step helical parameters 
 
 
 ```python
@@ -426,12 +428,12 @@ plt.show()
 
 
     
-![png](_static/output_24_0.png)
+![png](output_24_0.png)
     
 
 
 <a id="avg_bp"></a>
-## Helical Base Pair (Intra Base Pair) Parameters
+### Helical Base Pair (Intra Base Pair) Parameters
 
 **Translational (Shear, Stretch, Stagger)** and **rotational (Buckle, Propeller, Opening)** parameters related to a **dinucleotide Intra-Base Pair**.
 
@@ -450,7 +452,7 @@ plt.show()
 - [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
 ***
 
-### Computing average values from all base-pair parameters
+#### Computing average values from all base-pair parameters
 
 
 ```python
@@ -475,7 +477,7 @@ for helpar in base_pair:
         properties=prop)
 ```
 
-### Showing the calculated average values for all base-pair helical parameters
+#### Showing the calculated average values for all base-pair helical parameters
 
 
 ```python
@@ -487,7 +489,7 @@ for helpar in base_pair:
     print("---------\n")
 ```
 
-### Plotting the average values for all base-pair helical parameters 
+#### Plotting the average values for all base-pair helical parameters 
 
 
 ```python
@@ -511,12 +513,12 @@ plt.show()
 
 
     
-![png](_static/output_31_0.png)
+![png](output_31_0.png)
     
 
 
 <a id="avg_axis"></a>
-## Axis Base Pair Parameters
+### Axis Base Pair Parameters
 
 ***
 **Translational (x/y-displacement)** and **rotational (inclination, tip)** parameters related to a dinucleotide Base Pair.
@@ -533,7 +535,7 @@ plt.show()
 - [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.averages** 
 ***
 
-### Computing average values from all Axis base-pair parameters
+#### Computing average values from all Axis base-pair parameters
 
 
 ```python
@@ -559,7 +561,7 @@ for helpar in axis_base_pairs:
         properties=prop)
 ```
 
-### Showing the calculated average values for all Axis base-pair helical parameters
+#### Showing the calculated average values for all Axis base-pair helical parameters
 
 
 ```python
@@ -571,7 +573,7 @@ for helpar in axis_base_pairs:
     print("---------\n")
 ```
 
-### Plotting the average values for all Axis base-pair helical parameters 
+#### Plotting the average values for all Axis base-pair helical parameters 
 
 
 ```python
@@ -595,12 +597,12 @@ plt.show()
 
 
     
-![png](_static/output_38_0.png)
+![png](output_38_0.png)
     
 
 
 <a id="avg_grooves"></a>
-## Grooves
+### Grooves
 
 ***
 Nucleic Acid Structure's strand backbones appear closer together on one side of the helix than on the other. This creates a **Major groove** (where backbones are far apart) and a **Minor groove** (where backbones are close together). **Depth and width** of these grooves can be mesured giving information about the different conformations that the nucleic acid structure can achieve.
@@ -618,7 +620,7 @@ Nucleic Acid Structure's strand backbones appear closer together on one side of 
 - [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages**
 ***
 
-### Computing average values from all Grooves parameters
+#### Computing average values from all Grooves parameters
 
 
 ```python
@@ -643,7 +645,7 @@ for helpar in grooves:
         properties=prop)
 ```
 
-### Showing the calculated average values for all Grooves parameters
+#### Showing the calculated average values for all Grooves parameters
 
 
 ```python
@@ -655,7 +657,7 @@ for helpar in grooves:
     print("---------\n")
 ```
 
-### Plotting the average values for all Grooves helical parameters 
+#### Plotting the average values for all Grooves helical parameters 
 
 
 ```python
@@ -679,12 +681,12 @@ plt.show()
 
 
     
-![png](_static/output_45_0.png)
+![png](output_45_0.png)
     
 
 
 <a id="avg_backbone"></a>
-## Backbone Torsions
+### Backbone Torsions
 
 ***
 
@@ -740,9 +742,10 @@ title="BI/BII population" width="300" />
 ***
 
 <a id="puckering"></a>
-## Sugar Puckering
 
-### Computing average values
+#### Sugar Puckering
+
+##### Computing average values
 
 
 ```python
@@ -766,7 +769,7 @@ puckering(
     properties=prop)
 ```
 
-### Showing the calculated average values
+##### Showing the calculated average values
 
 
 ```python
@@ -1009,7 +1012,7 @@ df
 
 
 
-### Plotting the average values 
+##### Plotting the average values 
 
 
 ```python
@@ -1020,15 +1023,15 @@ Image(filename=output_puckering_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_53_0.jpg)
+![jpeg](output_53_0.jpg)
     
 
 
 
 <a id="alphagamma"></a>
-## Canonical Alpha/Gamma
+#### Canonical Alpha/Gamma
 
-### Computing average values
+##### Computing average values
 
 
 ```python
@@ -1056,7 +1059,7 @@ canonicalag(
     properties=prop)
 ```
 
-### Showing the calculated average values
+##### Showing the calculated average values
 
 
 ```python
@@ -1221,7 +1224,7 @@ df
 
 
 
-### Plotting the average values 
+##### Plotting the average values 
 
 
 ```python
@@ -1232,15 +1235,15 @@ Image(filename=output_alphagamma_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_60_0.jpg)
+![jpeg](output_60_0.jpg)
     
 
 
 
 <a id="bIbII"></a>
-## BI/BII Population
+#### BI/BII Population
 
-### Computing average values
+##### Computing average values
 
 
 ```python
@@ -1269,7 +1272,7 @@ bipopulations(
 
 ```
 
-### Showing the calculated average values
+##### Showing the calculated average values
 
 
 ```python
@@ -1460,7 +1463,7 @@ df
 
 
 
-### Plotting the average values 
+##### Plotting the average values 
 
 
 ```python
@@ -1471,13 +1474,13 @@ Image(filename=output_bIbII_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_67_0.jpg)
+![jpeg](output_67_0.jpg)
     
 
 
 
 <a id="timeseries"></a>
-# Extracting Time series Helical Parameters
+## Extracting Time series Helical Parameters
 
 **Time series** values for the set of **helical parameters** can be also extracted from the output of **Curves+/Canal** execution on **Molecular Dynamics Trajectories**. The **helical parameters** can be divided in the same 5 main blocks previously introduced:
 
@@ -1959,11 +1962,11 @@ plt.show()
 
 
     
-![png](_static/output_79_0.png)
+![png](output_79_0.png)
     
 
 
-## Computing timeseries for all base-pair step parameters 
+### Computing timeseries for all base-pair step parameters 
 
 
 ```python
@@ -1996,7 +1999,7 @@ for timeseries_zipfile in output_timeseries_bps_file_paths.values():
         zip_ref.extractall(timeseries_dir)
 ```
 
-## Computing timeseries for all base-pair parameters 
+### Computing timeseries for all base-pair parameters 
 
 
 ```python
@@ -2029,7 +2032,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
         zip_ref.extractall(timeseries_dir)
 ```
 
-## Computing timeseries for all axis parameters 
+### Computing timeseries for all axis parameters 
 
 
 ```python
@@ -2059,7 +2062,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
         zip_ref.extractall(timeseries_dir)
 ```
 
-## Computing timeseries for all grooves parameters 
+### Computing timeseries for all grooves parameters 
 
 
 ```python
@@ -2089,7 +2092,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
         zip_ref.extractall(timeseries_dir)
 ```
 
-## Computing timeseries for all backbone torsions parameters 
+### Computing timeseries for all backbone torsions parameters 
 
 
 ```python
@@ -2120,7 +2123,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
 ```
 
 <a id="stiffness"></a>
-# Stiffness
+## Stiffness
 
 **Molecular stiffness** is an **elastic force constant** associated with **helical deformation** at the **base pair step** level and is determined by inversion of the covariance matrix in helical space, which yields **stiffness matrices** whose diagonal elements provide the **stiffness constants** associated with **pure rotational** (twist, roll and tilt) and **translational** (rise, shift and slide) **deformations** within the given step.
 
@@ -2253,7 +2256,7 @@ Image(filename=output_stiffness_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_98_0.jpg)
+![jpeg](output_98_0.jpg)
     
 
 
@@ -2395,13 +2398,13 @@ Image(filename=output_stiffness_bps_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_101_0.jpg)
+![jpeg](output_101_0.jpg)
     
 
 
 
 <a id="bimodality"></a>
-# Bimodality
+## Bimodality
 
 **Base-pair steps** helical parameters usually follow a normal (Gaussian-like) distribution. However, recent studies observed **bimodal distributions** in some **base-pair steps** for **twist and slide**, highlighting potential caveats on the **harmonic approximation** implicit in **elastic analysis** and mesoscopic models of DNA flexibility.
 
@@ -2475,12 +2478,12 @@ plt.show()
 
 
     
-![png](_static/output_104_0.png)
+![png](output_104_0.png)
     
 
 
 <a id="correlations"></a>
-# Correlations
+## Correlations
 
 Sequence-dependent **correlation movements** have been identified in DNA conformational analysis at the **base pair** and **base pair-step** level. **Trinucleotides** were found to show moderate to high **correlations** in some **intra base pair helical parameter** (e.g. shear-opening, shear-stretch, stagger-buckle). Similarly, some **tetranucleotides** are showing strong **correlations** in their **inter base pair helical parameters** (e.g. shift-tilt, slide-twist, rise-tilt, shift-slide, and shift-twist in RR steps), with **negative correlations** in the shift-slide and roll-twist cases. **Correlations** are also observed in the combination of **inter- and intra-helical parameters** (e.g. shift-opening, rise-buckle, stagger-tilt). **Correlations** analysis can be also extended to **neighboring steps** (e.g. twist in the central YR step of XYRR tetranucleotides with slide in the adjacent RR step). 
 
@@ -2514,7 +2517,7 @@ https://doi.org/10.1093/nar/gkz905
 ***
 
 <a id="intrasequencecorrelation"></a>
-## Sequence Correlations: Intra-base pairs
+### Sequence Correlations: Intra-base pairs
 
 
 ```python
@@ -2732,13 +2735,13 @@ Image(filename=output_intrabp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_109_0.jpg)
+![jpeg](output_109_0.jpg)
     
 
 
 
 <a id="intersequencecorrelation"></a>
-## Sequence Correlations: Inter-base pair steps
+### Sequence Correlations: Inter-base pair steps
 
 
 ```python
@@ -2956,13 +2959,13 @@ Image(filename=output_interbp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_113_0.jpg)
+![jpeg](output_113_0.jpg)
     
 
 
 
 <a id="intrahelparcorrelation"></a>
-## Helical Parameter Correlations: Intra-base pair 
+### Helical Parameter Correlations: Intra-base pair 
 
 
 ```python
@@ -3102,13 +3105,13 @@ Image(filename=output_helpar_bp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_117_0.jpg)
+![jpeg](output_117_0.jpg)
     
 
 
 
 <a id="interhelparcorrelation"></a>
-## Helical Parameter Correlations: Inter-base pair steps
+### Helical Parameter Correlations: Inter-base pair steps
 
 
 ```python
@@ -3248,13 +3251,13 @@ Image(filename=output_helpar_bps_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](_static/output_121_0.jpg)
+![jpeg](output_121_0.jpg)
     
 
 
 
 <a id="intrabasepaircorrelation"></a>
-## Neighboring steps Correlations: Intra-base pair 
+### Neighboring steps Correlations: Intra-base pair 
 
 
 ```python
@@ -3593,13 +3596,13 @@ Image(filename=output_bp_correlation_jpg_path,width = 800)
 
 
     
-![jpeg](_static/output_125_0.jpg)
+![jpeg](output_125_0.jpg)
     
 
 
 
 <a id="interbasepaircorrelation"></a>
-## Neighboring steps Correlations: Inter-base pair steps
+### Neighboring steps Correlations: Inter-base pair steps
 
 
 ```python
@@ -3914,7 +3917,7 @@ Image(filename=output_bps_correlation_jpg_path,width = 800)
 
 
     
-![jpeg](_static/output_129_0.jpg)
+![jpeg](output_129_0.jpg)
     
 
 
