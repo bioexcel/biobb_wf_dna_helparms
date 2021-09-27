@@ -362,7 +362,7 @@ Image(filename=output_averages_jpg_path,width = 600)
 
 
     
-![jpeg](output_18_0.jpg)
+![jpeg](_static/output_18_0.jpg)
     
 
 
@@ -428,7 +428,7 @@ plt.show()
 
 
     
-![png](output_24_0.png)
+![png](_static/output_24_0.png)
     
 
 
@@ -513,7 +513,7 @@ plt.show()
 
 
     
-![png](output_31_0.png)
+![png](_static/output_31_0.png)
     
 
 
@@ -597,7 +597,7 @@ plt.show()
 
 
     
-![png](output_38_0.png)
+![png](_static/output_38_0.png)
     
 
 
@@ -681,7 +681,7 @@ plt.show()
 
 
     
-![png](output_45_0.png)
+![png](_static/output_45_0.png)
     
 
 
@@ -1023,7 +1023,7 @@ Image(filename=output_puckering_jpg_path,width = 600)
 
 
     
-![jpeg](output_53_0.jpg)
+![jpeg](_static/output_53_0.jpg)
     
 
 
@@ -1235,7 +1235,7 @@ Image(filename=output_alphagamma_jpg_path,width = 600)
 
 
     
-![jpeg](output_60_0.jpg)
+![jpeg](_static/output_60_0.jpg)
     
 
 
@@ -1474,7 +1474,7 @@ Image(filename=output_bIbII_jpg_path,width = 600)
 
 
     
-![jpeg](output_67_0.jpg)
+![jpeg](_static/output_67_0.jpg)
     
 
 
@@ -1962,7 +1962,7 @@ plt.show()
 
 
     
-![png](output_79_0.png)
+![png](_static/output_79_0.png)
     
 
 
@@ -2256,7 +2256,7 @@ Image(filename=output_stiffness_jpg_path,width = 600)
 
 
     
-![jpeg](output_98_0.jpg)
+![jpeg](_static/output_98_0.jpg)
     
 
 
@@ -2398,7 +2398,7 @@ Image(filename=output_stiffness_bps_jpg_path,width = 600)
 
 
     
-![jpeg](output_101_0.jpg)
+![jpeg](_static/output_101_0.jpg)
     
 
 
@@ -2478,7 +2478,7 @@ plt.show()
 
 
     
-![png](output_104_0.png)
+![png](_static/output_104_0.png)
     
 
 
@@ -2735,7 +2735,7 @@ Image(filename=output_intrabp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](output_109_0.jpg)
+![jpeg](_static/output_109_0.jpg)
     
 
 
@@ -2959,7 +2959,7 @@ Image(filename=output_interbp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](output_113_0.jpg)
+![jpeg](_static/output_113_0.jpg)
     
 
 
@@ -3105,7 +3105,7 @@ Image(filename=output_helpar_bp_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](output_117_0.jpg)
+![jpeg](_static/output_117_0.jpg)
     
 
 
@@ -3251,7 +3251,7 @@ Image(filename=output_helpar_bps_correlation_jpg_path,width = 600)
 
 
     
-![jpeg](output_121_0.jpg)
+![jpeg](_static/output_121_0.jpg)
     
 
 
@@ -3596,7 +3596,7 @@ Image(filename=output_bp_correlation_jpg_path,width = 800)
 
 
     
-![jpeg](output_125_0.jpg)
+![jpeg](_static/output_125_0.jpg)
     
 
 
@@ -3917,7 +3917,7 @@ Image(filename=output_bps_correlation_jpg_path,width = 800)
 
 
     
-![jpeg](output_129_0.jpg)
+![jpeg](_static/output_129_0.jpg)
     
 
 
