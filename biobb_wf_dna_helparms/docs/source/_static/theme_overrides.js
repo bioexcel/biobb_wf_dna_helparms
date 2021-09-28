@@ -6,5 +6,6 @@ $(document).ready(function() {
 		
 	$('.wy-side-nav-search .icon.icon-home').html('<img src="' + path + '_static/logo.png" class="logo" alt="Logo">');
 
-	$('table.dataframe').parent().css('overflow-x', 'scroll');
+	$('table.dataframe').parent().css('overflow-x', 'auto');
+	$('table.dataframe').parent().css('margin-bottom', '20px');
 });
