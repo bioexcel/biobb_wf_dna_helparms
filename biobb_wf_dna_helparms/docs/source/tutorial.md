@@ -112,13 +112,13 @@ backbone_torsions = ('alphaC', 'alphaW', 'betaC', 'betaW', 'gammaC', 'gammaW', '
 **Conformational analysis of nucleic acids revisited: Curves+**<br>
 *R. Lavery, M. Moakher, J. H. Maddocks, D. Petkeviciute, K. Zakrzewska*<br>
 ***Nucleic Acids Research, Volume 37, Issue 17, 1 September 2009, Pages 5917–5929***<br>
-https://doi.org/10.1093/nar/gkp608
+[https://doi.org/10.1093/nar/gkp608](https://doi.org/10.1093/nar/gkp608)
 
 
 **CURVES+ web server for analyzing and visualizing the helical, backbone and groove parameters of nucleic acid structure.**<br>
 *R. Lavery, M. Moakher, J.H. Maddocks, D. Petkeviciute, K. Zakrzewska.*<br>
 ***Nucleic Acids Res 2009, 37:5917-5929***<br>
-https://bisi.ibcp.fr/tools/curves_plus/
+[https://bisi.ibcp.fr/tools/curves_plus/](https://bisi.ibcp.fr/tools/curves_plus/)
 
 ***
 **Building Blocks** used:
@@ -403,6 +403,86 @@ for helpar in base_pair_step:
     print("---------\n")
 ```
 
+    Helical Parameter: rise
+      Base Pair Step      mean       std
+    0             GC  3.470550  0.377972
+    1             CG  2.978038  0.454661
+    2             GA  3.377096  0.408705
+    3             AA  3.363942  0.378155
+    4             AT  3.444138  0.355242
+    5             TT  3.374110  0.376290
+    6             TC  3.370114  0.411934
+    7             CG  2.982740  0.454215
+    8             GC  3.464096  0.390428
+    ---------
+    
+    Helical Parameter: roll
+      Base Pair Step      mean       std
+    0             GC -4.192414  8.331507
+    1             CG  9.446606  9.363419
+    2             GA  1.852456  8.644153
+    3             AA  0.536582  7.624018
+    4             AT -3.163010  7.237972
+    5             TT  0.534468  7.656334
+    6             TC  2.127450  8.682155
+    7             CG  9.585186  9.365877
+    8             GC -4.021720  8.647046
+    ---------
+    
+    Helical Parameter: twist
+      Base Pair Step       mean       std
+    0             GC  34.088546  4.816438
+    1             CG  32.326028  6.989191
+    2             GA  35.500510  5.637390
+    3             AA  35.972860  4.838027
+    4             AT  32.721506  3.618198
+    5             TT  36.053014  4.974014
+    6             TC  35.610722  5.545855
+    7             CG  32.319386  6.922376
+    8             GC  34.228190  4.863295
+    ---------
+    
+    Helical Parameter: shift
+      Base Pair Step      mean       std
+    0             GC  0.269898  1.002226
+    1             CG  0.261994  1.120109
+    2             GA -0.568252  0.924852
+    3             AA -0.303916  0.701930
+    4             AT  0.003008  0.560834
+    5             TT  0.320328  0.700562
+    6             TC  0.573412  0.934916
+    7             CG -0.315024  1.130856
+    8             GC -0.220348  0.982379
+    ---------
+    
+    Helical Parameter: slide
+      Base Pair Step      mean       std
+    0             GC -0.207536  0.492641
+    1             CG  0.121372  0.560931
+    2             GA -0.023312  0.648352
+    3             AA -0.502846  0.563088
+    4             AT -0.963374  0.396783
+    5             TT -0.510682  0.556494
+    6             TC -0.011398  0.648248
+    7             CG  0.135720  0.561489
+    8             GC -0.242346  0.509866
+    ---------
+    
+    Helical Parameter: tilt
+      Base Pair Step      mean       std
+    0             GC  0.788582  5.737113
+    1             CG  2.352174  6.790473
+    2             GA -2.433898  5.987960
+    3             AA -2.723502  5.435644
+    4             AT  0.072902  4.969859
+    5             TT  2.780530  5.351470
+    6             TC  2.466076  5.965965
+    7             CG -2.520270  6.909690
+    8             GC -0.519486  5.749269
+    ---------
+    
+
+
 #### Plotting the average values for all base-pair step helical parameters 
 
 
@@ -489,6 +569,92 @@ for helpar in base_pair:
     print("---------\n")
 ```
 
+    Helical Parameter: shear
+      Base Pair       mean       std
+    0          G -0.049992  0.437419
+    1          C -0.066120  0.428450
+    2          G  0.033414  0.438027
+    3          A  0.192408  0.393915
+    4          A  0.181268  0.382112
+    5          T -0.187710  0.394140
+    6          T -0.209416  0.391508
+    7          C -0.021976  0.444251
+    8          G  0.061500  0.432066
+    9          C  0.033314  0.430674
+    ---------
+    
+    Helical Parameter: stretch
+      Base Pair       mean       std
+    0          G  0.021910  0.154373
+    1          C  0.057128  0.146271
+    2          G  0.089684  0.162121
+    3          A  0.073182  0.155722
+    4          A  0.043370  0.154155
+    5          T  0.046586  0.151565
+    6          T  0.072776  0.159554
+    7          C  0.088406  0.164430
+    8          G  0.060682  0.149506
+    9          C  0.026160  0.148136
+    ---------
+    
+    Helical Parameter: stagger
+      Base Pair       mean       std
+    0          G  0.270900  0.531987
+    1          C  0.190716  0.524902
+    2          G -0.030574  0.514709
+    3          A  0.094458  0.515384
+    4          A  0.123512  0.511518
+    5          T  0.111454  0.501179
+    6          T  0.094714  0.513247
+    7          C -0.052344  0.516656
+    8          G  0.187962  0.520935
+    9          C  0.245116  0.527218
+    ---------
+    
+    Helical Parameter: buckle
+      Base Pair       mean        std
+    0          G -2.011124  10.957743
+    1          C -2.108248  10.706547
+    2          G  7.351526  11.411534
+    3          A  6.094836  11.016860
+    4          A  2.021262   9.824963
+    5          T -1.932570   9.869768
+    6          T -6.454566  10.888373
+    7          C -7.332888  11.269869
+    8          G  1.551400  10.722523
+    9          C  1.740906  10.696502
+    ---------
+    
+    Helical Parameter: propel
+      Base Pair        mean        std
+    0          G  -8.589338  13.487527
+    1          C  -3.200962  12.673929
+    2          G  -4.877606  12.107475
+    3          A -15.895916  11.463353
+    4          A -17.740540  11.053182
+    5          T -17.600944  10.901201
+    6          T -15.934650  11.522282
+    7          C  -3.809752  12.151864
+    8          G  -3.145238  12.632066
+    9          C  -8.300600  13.082747
+    ---------
+    
+    Helical Parameter: opening
+      Base Pair       mean       std
+    0          G  0.519980  4.990688
+    1          C  0.727574  4.801118
+    2          G  2.788520  5.011118
+    3          A  2.696966  6.306307
+    4          A  2.434002  5.929345
+    5          T  2.367904  5.751322
+    6          T  2.837478  6.282682
+    7          C  2.813492  5.139189
+    8          G  0.822494  4.850359
+    9          C  0.483850  4.838646
+    ---------
+    
+
+
 #### Plotting the average values for all base-pair helical parameters 
 
 
@@ -573,6 +739,64 @@ for helpar in axis_base_pairs:
     print("---------\n")
 ```
 
+    Helical Parameter: inclin
+      Base Pair       mean       std
+    0          G  6.041284  6.230831
+    1          C  5.410818  5.944490
+    2          G  5.825528  5.359376
+    3          A  2.924440  5.031021
+    4          A  0.346356  4.709278
+    5          T  0.460490  4.744693
+    6          T  3.120780  5.069334
+    7          C  6.106598  5.504673
+    8          G  5.647446  6.043921
+    9          C  6.601924  6.358550
+    ---------
+    
+    Helical Parameter: tip
+      Base Pair       mean        std
+    0          G  2.512608   5.728359
+    1          C -5.681794   6.177066
+    2          G  0.907828   6.084601
+    3          A  0.569286   5.347552
+    4          A  1.306582   4.845978
+    5          T -1.227768   5.019692
+    6          T -0.568284   5.338846
+    7          C -0.767708   6.048420
+    8          G  5.821194   6.102313
+    9          C -2.578986  10.627202
+    ---------
+    
+    Helical Parameter: xdisp
+      Base Pair       mean       std
+    0          G -0.659664  0.857688
+    1          C -0.487874  0.832502
+    2          G -0.421234  0.867164
+    3          A -0.937412  0.731117
+    4          A -1.150654  0.600304
+    5          T -1.149698  0.604352
+    6          T -0.933022  0.736415
+    7          C -0.428964  0.875973
+    8          G -0.560260  0.827803
+    9          C -0.704972  0.883845
+    ---------
+    
+    Helical Parameter: ydisp
+      Base Pair       mean       std
+    0          G  0.031522  0.563973
+    1          C -0.185588  0.531173
+    2          G -0.029302  0.526326
+    3          A  0.089948  0.507185
+    4          A  0.132712  0.462237
+    5          T -0.133432  0.454954
+    6          T -0.113044  0.506105
+    7          C  0.002278  0.526475
+    8          G  0.176116  0.529698
+    9          C -0.071754  0.554503
+    ---------
+    
+
+
 #### Plotting the average values for all Axis base-pair helical parameters 
 
 
@@ -656,6 +880,60 @@ for helpar in grooves:
     print(df)
     print("---------\n")
 ```
+
+    Helical Parameter: majd
+      Base Pair Step      mean       std
+    0             GC       NaN       NaN
+    1             CG -0.703077  1.362241
+    2             GA  3.396398  1.402178
+    3             AA  5.710123  1.406443
+    4             AT  5.156143  1.346752
+    5             TT  5.139702  1.337523
+    6             TC  5.735556  1.447770
+    7             CG  3.371511  1.402279
+    8             GC -0.644086  1.444480
+    ---------
+    
+    Helical Parameter: majw
+      Base Pair Step       mean       std
+    0             GC        NaN       NaN
+    1             CG  13.040615  1.300370
+    2             GA  12.664800  1.419105
+    3             AA  11.986143  1.670021
+    4             AT  11.476450  1.797558
+    5             TT  11.472435  1.740485
+    6             TC  11.964836  1.648435
+    7             CG  12.508447  1.419017
+    8             GC  12.819785  1.347786
+    ---------
+    
+    Helical Parameter: mind
+      Base Pair Step      mean       std
+    0             GC       NaN       NaN
+    1             CG  3.932224  1.148757
+    2             GA  5.100660  1.114656
+    3             AA  4.926210  0.677415
+    4             AT  4.968002  0.453657
+    5             TT  4.966188  0.452291
+    6             TC  4.912856  0.690885
+    7             CG  5.121034  1.132328
+    8             GC  3.969312  1.021299
+    ---------
+    
+    Helical Parameter: minw
+      Base Pair Step      mean       std
+    0             GC       NaN       NaN
+    1             CG  7.713347  1.175525
+    2             GA  6.789962  1.405118
+    3             AA  5.296306  1.332686
+    4             AT  4.160776  1.113765
+    5             TT  4.109198  1.119448
+    6             TC  5.376128  1.314328
+    7             CG  6.827374  1.402630
+    8             GC  7.729192  1.148585
+    ---------
+    
+
 
 #### Plotting the average values for all Grooves helical parameters 
 
@@ -2413,20 +2691,20 @@ Image(filename=output_stiffness_bps_jpg_path,width = 600)
 	title="Twist bimodality" width="600" />
 ***
 
-**μABC: a systematic microsecond molecular dynamics study of tetranucleotide sequence effects in B-DNA**
-*Marco Pasi, John H Maddocks, David Beveridge, Thomas C Bishop, David A Case, Thomas Cheatham 3rd, Pablo D Dans, B Jayaram, Filip Lankas, Charles Laughton, Jonathan Mitchell, Roman Osman, Modesto Orozco, Alberto Pérez, Daiva Petkevičiūtė, Nada Spackova, Jiri Sponer, Krystyna Zakrzewska, Richard Lavery*
+**μABC: a systematic microsecond molecular dynamics study of tetranucleotide sequence effects in B-DNA**<br>
+*Marco Pasi, John H Maddocks, David Beveridge, Thomas C Bishop, David A Case, Thomas Cheatham 3rd, Pablo D Dans, B Jayaram, Filip Lankas, Charles Laughton, Jonathan Mitchell, Roman Osman, Modesto Orozco, Alberto Pérez, Daiva Petkevičiūtė, Nada Spackova, Jiri Sponer, Krystyna Zakrzewska, Richard Lavery*<br>
 ***Nucleic Acids Research 2014, Volume 42, Issue 19, Pages 12272-12283***<br>
-https://doi.org/10.1093/nar/gku855
+[https://doi.org/10.1093/nar/gku855](https://doi.org/10.1093/nar/gku855)
 
 **Exploring polymorphisms in B-DNA helical conformations**<br>
 *Pablo D Dans, Alberto Pérez, Ignacio Faustino, Richard Lavery, Modesto Orozco*<br>
 ***Nucleic Acids Research 2012, Volume 40, Issue 21, Pages 10668-10678***<br>
-https://doi.org/10.1093/nar/gks884
+[https://doi.org/10.1093/nar/gks884](https://doi.org/10.1093/nar/gks884)
 
 **A systematic molecular dynamics study of nearest-neighbor effects on base pair and base pair step conformations and fluctuations in B-DNA**<br>
 *Lavery R, Zakrzewska K, Beveridge D, Bishop TC, Case DA, Cheatham T, III, Dixit S, Jayaram B, Lankas F, Laughton C, John H Maddocks, Alexis Michon, Roman Osman, Modesto Orozco, Alberto Perez, Tanya Singh, Nada Spackova, Jiri Sponer*<br>
 ***Nucleic Acids Research 2010, Volume 38, Pages 299–313***<br>
-https://doi.org/10.1093/nar/gkp834
+[https://doi.org/10.1093/nar/gkp834](https://doi.org/10.1093/nar/gkp834)
 
 ***
 
@@ -2499,10 +2777,10 @@ Sequence-dependent **correlation movements** have been identified in DNA conform
 	title="Rise correlations" width="400" />
 ***
 
-**The static and dynamic structural heterogeneities of B-DNA: extending Calladine–Dickerson rules**
+**The static and dynamic structural heterogeneities of B-DNA: extending Calladine–Dickerson rules**<br>
 *Pablo D Dans, Alexandra Balaceanu, Marco Pasi, Alessandro S Patelli, Daiva Petkevičiūtė, Jürgen Walther, Adam Hospital, Genís Bayarri, Richard Lavery, John H Maddocks, Modesto Orozco*
 ***Nucleic Acids Research 2019, Volume 47, Issue 21, Pages 11090-11102***<br>
-https://doi.org/10.1093/nar/gkz905
+[https://doi.org/10.1093/nar/gkz905](https://doi.org/10.1093/nar/gkz905)
 
 ***
 
