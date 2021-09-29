@@ -8,4 +8,5 @@ $(document).ready(function() {
 
 	$('table.dataframe').parent().css('overflow-x', 'auto');
 	$('table.dataframe').parent().css('margin-bottom', '20px');
+	$('table.dataframe td, table.dataframe th').parent().css('padding', '5px 10px');
 });
