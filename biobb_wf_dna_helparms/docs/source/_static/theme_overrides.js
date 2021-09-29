@@ -8,5 +8,7 @@ $(document).ready(function() {
 
 	$('table.dataframe').parent().css('overflow-x', 'auto');
 	$('table.dataframe').parent().css('margin-bottom', '20px');
-	$('table.dataframe td, table.dataframe th').parent().css('padding', '5px 10px');
+	$('table.dataframe').css('border-color', '#999');
+	$('table.dataframe').css('color', '#555');
+	$('table.dataframe td, table.dataframe th').css('padding', '5px 10px');
 });
