@@ -25,9 +25,15 @@ git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git
 cd biobb_wf_dna_helparms
 conda env create -f conda_env/environment.yml
 conda activate biobb_dna_helparms_tutorial
-jupyter-nbextension enable --py --user widgetsnbextension
 jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb
-  ``` 
+``` 
+
+Please execute the following commands before launching the Jupyter Notebook if you experience some issues with some widgets:
+
+```console
+jupyter-nbextension enable --py --user widgetsnbextension
+``` 
+
 
 ***
 ## Pipeline steps
@@ -43,12 +49,12 @@ jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb
  8. [Stiffness](#stiffness)
  9. [Bimodality](#bimodality)
  10. [Correlations](#correlations)
-     1. [Sequence Correlations: Intra-base pairs](#intrasequencecorrelation)
-     2. [Sequence Correlations: Inter-base pair steps](#intersequencecorrelation)
-     3. [Helical Parameter Correlations: Intra-base pairs](#intrahelparcorrelation)
-     4. [Helical Parameter Correlations: Inter-base pair steps](#interhelparcorrelation)
-     5. [Neighboring steps Correlations: Intra-base pairs](#intrabasepaircorrelation)
-     6. [Neighboring steps Correlations: Inter-base pair steps](#interbasepaircorrelation)
+     1. [Sequence Correlations: Intra-base pairs](#intraseqcorr)
+     2. [Sequence Correlations: Inter-base pair steps](#interseqcorr)
+     3. [Helical Parameter Correlations: Intra-base pairs](#intrahpcorr)
+     4. [Helical Parameter Correlations: Inter-base pair steps](#interhpcorr)
+     5. [Neighboring steps Correlations: Intra-base pairs](#intrabpcorr)
+     6. [Neighboring steps Correlations: Inter-base pair steps](#interbpcorr)
  11. [Questions & Comments](#questions)
  
 ***
@@ -116,9 +122,10 @@ backbone_torsions = ('alphaC', 'alphaW', 'betaC', 'betaW', 'gammaC', 'gammaW', '
 
 
 **CURVES+ web server for analyzing and visualizing the helical, backbone and groove parameters of nucleic acid structure.**<br>
-*R. Lavery, M. Moakher, J.H. Maddocks, D. Petkeviciute, K. Zakrzewska.*<br>
-***Nucleic Acids Res 2009, 37:5917-5929***<br>
-[https://bisi.ibcp.fr/tools/curves_plus/](https://bisi.ibcp.fr/tools/curves_plus/)
+*C. Blanchet, M. Pasi, K. Zakrzewska, R. Lavery*<br>
+***Nucleic Acids Research, Volume 39, Issue suppl_2, 1 July 2011, Pages W68–W73***<br>
+https://doi.org/10.1093/nar/gkr316
+http://curvesplus.bsc.es
 
 ***
 **Building Blocks** used:
@@ -139,7 +146,7 @@ The extraction of **helical parameters** is then done in **two steps**:
 
 
 ```python
-from biobb_dna.curvesplus.biobb_curves import curves
+from biobb_dna.curvesplus.biobb_curves import biobb_curves
 
 curves_out_lis = "curves.out.lis"
 curves_out_cda = "curves.out.cda"
@@ -149,7 +156,7 @@ prop = {
     's2range' : '24:13'
 }
 
-curves(
+biobb_curves(
     input_struc_path=traj,
     input_top_path=top,
     output_lis_path=curves_out_lis,
@@ -165,7 +172,7 @@ curves(
 
 
 ```python
-from biobb_dna.curvesplus.biobb_canal import canal
+from biobb_dna.curvesplus.biobb_canal import biobb_canal
 
 canal_out = "canal.out.zip"
 
@@ -174,7 +181,7 @@ prop = {
     'histo' : True
 }
 
-canal(
+biobb_canal(
     input_cda_file=curves_out_cda,
     input_lis_file=curves_out_lis,
     output_zip_path=canal_out,
@@ -228,14 +235,14 @@ The **helical parameters** can be divided in 5 main blocks:
 	title="Helical Base Pair Step Parameters" width="400" />
 ***
 **Building Block** used:
-- [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
+- [dna_averages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
 ***
 
 #### Extracting a particular Helical Parameter: Rise
 
 
 ```python
-from biobb_dna.dna.dna_averages import helparaverages
+from biobb_dna.dna.dna_averages import dna_averages
 
 helpar = 'rise'
 
@@ -248,7 +255,7 @@ prop = {
     'sequence': seq
 }
 
-helparaverages(
+dna_averages(
     input_ser_path=input_file_path,
     output_csv_path=output_averages_csv_path,
     output_jpg_path=output_averages_jpg_path,
@@ -371,7 +378,7 @@ Image(filename=output_averages_jpg_path,width = 600)
 
 
 ```python
-from biobb_dna.dna.dna_averages import helparaverages
+from biobb_dna.dna.dna_averages import dna_averages
 
 for helpar in base_pair_step:
 
@@ -384,7 +391,7 @@ for helpar in base_pair_step:
         'sequence': seq
     }
 
-    helparaverages(
+    dna_averages(
         input_ser_path=input_file_path,
         output_csv_path=output_averages_csv_path,
         output_jpg_path=output_averages_jpg_path,
@@ -529,14 +536,14 @@ plt.show()
 	title="Helical Base Pair Parameters" width="400" />
 ***
 **Building Block** used:
-- [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
+- [dna_averages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages** 
 ***
 
 #### Computing average values from all base-pair parameters
 
 
 ```python
-from biobb_dna.dna.dna_averages import helparaverages
+from biobb_dna.dna.dna_averages import dna_averages
 
 for helpar in base_pair:
 
@@ -550,7 +557,7 @@ for helpar in base_pair:
         'sequence': seq
     }
 
-    helparaverages(
+    dna_averages(
         input_ser_path=input_file_path,
         output_csv_path=output_averages_csv_path,
         output_jpg_path=output_averages_jpg_path,
@@ -698,14 +705,14 @@ plt.show()
 	title="Axis Base Pair Parameters" width="200" />
 ***
 **Building Block** used:
-- [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.averages** 
+- [dna_averages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.averages** 
 ***
 
 #### Computing average values from all Axis base-pair parameters
 
 
 ```python
-from biobb_dna.dna.dna_averages import helparaverages
+from biobb_dna.dna.dna_averages import dna_averages
 
 for helpar in axis_base_pairs:
 
@@ -720,7 +727,7 @@ for helpar in axis_base_pairs:
 #        'seqpos': [4,3]
     }
 
-    helparaverages(
+    dna_averages(
         input_ser_path=input_file_path,
         output_csv_path=output_averages_csv_path,
         output_jpg_path=output_averages_jpg_path,
@@ -841,14 +848,14 @@ Nucleic Acid Structure's strand backbones appear closer together on one side of 
 	title="Grooves Parameters" width="200" />
 ***
 **Building Block** used:
-- [helparaverages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages**
+- [dna_averages](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages) from **biobb_dna.dna.dna_averages**
 ***
 
 #### Computing average values from all Grooves parameters
 
 
 ```python
-from biobb_dna.dna.dna_averages import helparaverages
+from biobb_dna.dna.dna_averages import dna_averages
 
 for helpar in grooves:
 
@@ -862,7 +869,7 @@ for helpar in grooves:
         'sequence': seq
     }
 
-    helparaverages(
+    dna_averages(
         input_ser_path=input_file_path,
         output_csv_path=output_averages_csv_path,
         output_jpg_path=output_averages_jpg_path,
@@ -1770,7 +1777,7 @@ Image(filename=output_bIbII_jpg_path,width = 600)
 
 ***
 **Building Block** used:
-- [helpartimeseries](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_timeseries) from **biobb_dna.dna.dna_timeseries**
+- [dna_timeseries](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_timeseries) from **biobb_dna.dna.dna_timeseries**
 ***
 
 ### Extracting a particular Helical Parameter
@@ -1779,7 +1786,7 @@ Image(filename=output_bIbII_jpg_path,width = 600)
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 # Modify the next variable to extract time series values for a different helical parameter
 # Possible values are: 
@@ -1800,7 +1807,7 @@ prop = {
     'sequence': seq
 }
 
-helpartimeseries(
+dna_timeseries(
     input_ser_path=input_file_path,
     output_zip_path=output_timeseries_file_path,
     properties=prop)
@@ -2248,7 +2255,7 @@ plt.show()
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 output_timeseries_bps_file_paths = {}
 for helpar in base_pair_step:
@@ -2261,7 +2268,7 @@ for helpar in base_pair_step:
         'sequence': seq
     }
 
-    helpartimeseries(
+    dna_timeseries(
         input_ser_path=input_file_path,
         output_zip_path=output_timeseries_bps_file_paths[helpar],
         properties=prop)
@@ -2281,7 +2288,7 @@ for timeseries_zipfile in output_timeseries_bps_file_paths.values():
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 output_timeseries_bp_file_paths = {}
 for helpar in base_pair:
@@ -2294,7 +2301,7 @@ for helpar in base_pair:
         'sequence': seq
     }
 
-    helpartimeseries(
+    dna_timeseries(
         input_ser_path=input_file_path,
         output_zip_path=output_timeseries_bp_file_paths[helpar],
         properties=prop)
@@ -2314,7 +2321,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 output_timeseries_bp_file_paths = {}
 for helpar in axis_base_pairs:
@@ -2327,7 +2334,7 @@ for helpar in axis_base_pairs:
         'sequence': seq
     }
 
-    helpartimeseries(
+    dna_timeseries(
         input_ser_path=input_file_path,
         output_zip_path=output_timeseries_bp_file_paths[helpar],
         properties=prop)
@@ -2344,7 +2351,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 output_timeseries_bp_file_paths = {}
 for helpar in grooves:
@@ -2357,7 +2364,7 @@ for helpar in grooves:
         'sequence': seq
     }
 
-    helpartimeseries(
+    dna_timeseries(
         input_ser_path=input_file_path,
         output_zip_path=output_timeseries_bp_file_paths[helpar],
         properties=prop)
@@ -2374,7 +2381,7 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
 
 
 ```python
-from biobb_dna.dna.dna_timeseries import helpartimeseries
+from biobb_dna.dna.dna_timeseries import dna_timeseries
 
 output_timeseries_bp_file_paths = {}
 for helpar in backbone_torsions:
@@ -2387,7 +2394,7 @@ for helpar in backbone_torsions:
         'sequence': seq
     }
 
-    helpartimeseries(
+    dna_timeseries(
         input_ser_path=input_file_path,
         output_zip_path=output_timeseries_bp_file_paths[helpar],
         properties=prop)
@@ -2410,14 +2417,14 @@ for timeseries_zipfile in output_timeseries_bp_file_paths.values():
 	title="Stiffness Matrix" width="500" />
 ***
 **Building Blocks** used:
-- [averagestiffness](https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.average_stiffness) from **biobb_dna.stiffness.average_stiffness** 
-- [bpstiffness](https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.basepair_stiffness) from **biobb_dna.stiffness.basepair_stiffness** 
+- [average_stiffness](https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.average_stiffness) from **biobb_dna.stiffness.average_stiffness** 
+- [basepair_stiffness](https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.basepair_stiffness) from **biobb_dna.stiffness.basepair_stiffness** 
 ***
 
 
 
 ```python
-from biobb_dna.stiffness.average_stiffness import averagestiffness
+from biobb_dna.stiffness.average_stiffness import average_stiffness
 
 helpar = "twist" # Modify this variable to extract time series values for a different helical parameter
 
@@ -2429,7 +2436,7 @@ prop = {
     'sequence' : seq
 }
 
-averagestiffness(
+average_stiffness(
     input_ser_path=input_file_path,
     output_csv_path=output_stiffness_csv_path,
     output_jpg_path=output_stiffness_jpg_path,
@@ -2541,7 +2548,7 @@ Image(filename=output_stiffness_jpg_path,width = 600)
 
 
 ```python
-from biobb_dna.stiffness.basepair_stiffness import bpstiffness
+from biobb_dna.stiffness.basepair_stiffness import basepair_stiffness
 
 timeseries_shift = timeseries_dir+"/series_shift_" + timesel.value + ".csv"
 timeseries_slide = timeseries_dir+"/series_slide_" + timesel.value + ".csv"
@@ -2553,7 +2560,7 @@ timeseries_twist = timeseries_dir+"/series_twist_" + timesel.value + ".csv"
 output_stiffness_bps_csv_path = "stiffness_bps.csv"
 output_stiffness_bps_jpg_path = "stiffness_bps.jpg"
 
-bpstiffness(
+basepair_stiffness(
     input_filename_shift=timeseries_shift,
     input_filename_slide=timeseries_slide,
     input_filename_rise=timeseries_rise,
@@ -2709,12 +2716,12 @@ Image(filename=output_stiffness_bps_jpg_path,width = 600)
 ***
 
 **Building Block** used:
-- [helparbimodality](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_bimodality) from **biobb_dna.dna.bimodality** 
+- [dna_bimodality](https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_bimodality) from **biobb_dna.dna.bimodality** 
 ***
 
 
 ```python
-from biobb_dna.dna.dna_bimodality import helparbimodality
+from biobb_dna.dna.dna_bimodality import dna_bimodality
 
 helpar = "twist"
 input_csv = timeseries_dir+"/series_"+helpar+"_"+timesel.value+'.csv'
@@ -2726,7 +2733,7 @@ output_bimodality_jpg = helpar+'.bimodality.jpg'
 prop = {
     'max_iter': 500
 }
-helparbimodality(
+dna_bimodality(
     input_csv_file=input_csv,
     output_csv_path=output_bimodality_csv,
     output_jpg_path=output_bimodality_jpg,
@@ -2765,12 +2772,12 @@ plt.show()
 
 Sequence-dependent **correlation movements** have been identified in DNA conformational analysis at the **base pair** and **base pair-step** level. **Trinucleotides** were found to show moderate to high **correlations** in some **intra base pair helical parameter** (e.g. shear-opening, shear-stretch, stagger-buckle). Similarly, some **tetranucleotides** are showing strong **correlations** in their **inter base pair helical parameters** (e.g. shift-tilt, slide-twist, rise-tilt, shift-slide, and shift-twist in RR steps), with **negative correlations** in the shift-slide and roll-twist cases. **Correlations** are also observed in the combination of **inter- and intra-helical parameters** (e.g. shift-opening, rise-buckle, stagger-tilt). **Correlations** analysis can be also extended to **neighboring steps** (e.g. twist in the central YR step of XYRR tetranucleotides with slide in the adjacent RR step). 
 
-- [Sequence Correlations: Intra-base pairs](#intrasequencecorrelation)
-- [Sequence Correlations: Inter-base pair steps](#intersequencecorrelation)
-- [Helical Parameter Correlations: Intra-base pairs](#intrahelparcorrelation)
-- [Helical Parameter Correlations: Inter-base pair steps](#interhelparcorrelation)
-- [Neighboring steps Correlations: Intra-base pairs](#intrabasepaircorrelation)
-- [Neighboring steps Correlations: Inter-base pair steps](#interbasepaircorrelation)
+- [Sequence Correlations: Intra-base pairs](#intraseqcorr)
+- [Sequence Correlations: Inter-base pair steps](#interseqcorr)
+- [Helical Parameter Correlations: Intra-base pairs](#intrahpcorr)
+- [Helical Parameter Correlations: Inter-base pair steps](#interhpcorr)
+- [Neighboring steps Correlations: Intra-base pairs](#intrabpcorr)
+- [Neighboring steps Correlations: Inter-base pair steps](#interbpcorr)
 
 ***
 <img src="https://mmb.irbbarcelona.org/NAFlex2/images/rise_correlations.png" alt="Rise correlations"
@@ -2785,21 +2792,21 @@ Sequence-dependent **correlation movements** have been identified in DNA conform
 ***
 
 **Building Blocks** used:
-- [intrasequencecorrelation](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#module-intrabp_correlations.intraseqcorr) from **biobb_dna.intrabp_correlations.intraseqcorr** 
-- [intersequencecorrelation](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interseqcorr-module) from **biobb_dna.interbp_correlations.interseqcorr** 
-- [intrahelparcorrelation](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrahpcorr-module) from **biobb_dna.intrabp_correlations.intrahpcorr** 
-- [interhelparcorrelation](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interhpcorr-module) from **biobb_dna.interbp_correlations.interhpcorr** 
-- [intrabasepaircorrelation](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrabpcorr-module) from **biobb_dna.intrabp_correlations.intrabpcorr** 
-- [interbasepaircorrelation](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interbpcorr-module) from **biobb_dna.interbp_correlations.interbpcorr** 
+- [intraseqcorr](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#module-intrabp_correlations.intraseqcorr) from **biobb_dna.intrabp_correlations.intraseqcorr** 
+- [interseqcorr](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interseqcorr-module) from **biobb_dna.interbp_correlations.interseqcorr** 
+- [intrahpcorr](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrahpcorr-module) from **biobb_dna.intrabp_correlations.intrahpcorr** 
+- [interhpcorr](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interhpcorr-module) from **biobb_dna.interbp_correlations.interhpcorr** 
+- [intrabpcorr](https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrabpcorr-module) from **biobb_dna.intrabp_correlations.intrabpcorr** 
+- [interbpcorr](https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interbpcorr-module) from **biobb_dna.interbp_correlations.interbpcorr** 
 
 ***
 
-<a id="intrasequencecorrelation"></a>
+<a id="intraseqcorr"></a>
 ### Sequence Correlations: Intra-base pairs
 
 
 ```python
-from biobb_dna.intrabp_correlations.intraseqcorr import intrasequencecorrelation
+from biobb_dna.intrabp_correlations.intraseqcorr import intraseqcorr
 
 input_file_path = "canal_out/canal_output" + "_" + helpar + ".ser"
 output_intrabp_correlation_csv_path = helpar+'.intrabp_correlation.csv'
@@ -2810,7 +2817,7 @@ prop={
 #    'helpar_name' : 'Rise'
 }
 
-intrasequencecorrelation(
+intraseqcorr(
     input_ser_path=input_file_path,
     output_csv_path=output_intrabp_correlation_csv_path,
     output_jpg_path=output_intrabp_correlation_jpg_path,
@@ -3018,12 +3025,12 @@ Image(filename=output_intrabp_correlation_jpg_path,width = 600)
 
 
 
-<a id="intersequencecorrelation"></a>
+<a id="interseqcorr"></a>
 ### Sequence Correlations: Inter-base pair steps
 
 
 ```python
-from biobb_dna.interbp_correlations.interseqcorr import intersequencecorrelation
+from biobb_dna.interbp_correlations.interseqcorr import interseqcorr
 
 input_file_path = "canal_out/canal_output" + "_" + helpar + ".ser"
 output_interbp_correlation_csv_path = helpar+'.interbp_correlation.csv'
@@ -3034,7 +3041,7 @@ prop={
 #    'helpar_name' : 'Rise'
 }
 
-intersequencecorrelation(
+interseqcorr(
     input_ser_path=input_file_path,
     output_csv_path=output_interbp_correlation_csv_path,
     output_jpg_path=output_interbp_correlation_jpg_path,
@@ -3242,12 +3249,12 @@ Image(filename=output_interbp_correlation_jpg_path,width = 600)
 
 
 
-<a id="intrahelparcorrelation"></a>
+<a id="intrahpcorr"></a>
 ### Helical Parameter Correlations: Intra-base pair 
 
 
 ```python
-from biobb_dna.intrabp_correlations.intrahpcorr import intrahelparcorrelation
+from biobb_dna.intrabp_correlations.intrahpcorr import intrahpcorr
 
 timeseries_shear = timeseries_dir+"/series_shear_"+timesel.value[:-1]+".csv"
 timeseries_stretch = timeseries_dir+"/series_stretch_"+timesel.value[:-1]+".csv"
@@ -3259,7 +3266,7 @@ timeseries_opening = timeseries_dir+"/series_opening_"+timesel.value[:-1]+".csv"
 output_helpar_bp_correlation_csv_path = "helpar_bp_correlation.csv"
 output_helpar_bp_correlation_jpg_path = "helpar_bp_correlation.jpg"
 
-intrahelparcorrelation(
+intrahpcorr(
     input_filename_shear=timeseries_shear,
     input_filename_stretch=timeseries_stretch,
     input_filename_stagger=timeseries_stagger,
@@ -3388,12 +3395,12 @@ Image(filename=output_helpar_bp_correlation_jpg_path,width = 600)
 
 
 
-<a id="interhelparcorrelation"></a>
+<a id="interhpcorr"></a>
 ### Helical Parameter Correlations: Inter-base pair steps
 
 
 ```python
-from biobb_dna.interbp_correlations.interhpcorr import interhelparcorrelation
+from biobb_dna.interbp_correlations.interhpcorr import interhpcorr
 
 timeseries_shift = timeseries_dir+"/series_shift_"+timesel.value+".csv"
 timeseries_slide = timeseries_dir+"/series_slide_"+timesel.value+".csv"
@@ -3405,7 +3412,7 @@ timeseries_twist = timeseries_dir+"/series_twist_"+timesel.value+".csv"
 output_helpar_bps_correlation_csv_path = "helpar_bps_correlation.csv"
 output_helpar_bps_correlation_jpg_path = "helpar_bps_correlation.jpg"
 
-interhelparcorrelation(
+interhpcorr(
     input_filename_shift=timeseries_shift,
     input_filename_slide=timeseries_slide,
     input_filename_rise=timeseries_rise,
@@ -3534,12 +3541,12 @@ Image(filename=output_helpar_bps_correlation_jpg_path,width = 600)
 
 
 
-<a id="intrabasepaircorrelation"></a>
+<a id="intrabpcorr"></a>
 ### Neighboring steps Correlations: Intra-base pair 
 
 
 ```python
-from biobb_dna.intrabp_correlations.intrabpcorr import intrabasepaircorrelation
+from biobb_dna.intrabp_correlations.intrabpcorr import intrabpcorr
 
 canal_shear = canal_dir+"/canal_output_shear.ser"
 canal_stretch = canal_dir+"/canal_output_stretch.ser"
@@ -3555,7 +3562,7 @@ prop = {
     'sequence' : seq
 }
 
-intrabasepaircorrelation(
+intrabpcorr(
     input_filename_shear=canal_shear,
     input_filename_stretch=canal_stretch,
     input_filename_stagger=canal_stagger,
@@ -3879,12 +3886,12 @@ Image(filename=output_bp_correlation_jpg_path,width = 800)
 
 
 
-<a id="interbasepaircorrelation"></a>
+<a id="interbpcorr"></a>
 ### Neighboring steps Correlations: Inter-base pair steps
 
 
 ```python
-from biobb_dna.interbp_correlations.interbpcorr import interbasepaircorrelation
+from biobb_dna.interbp_correlations.interbpcorr import interbpcorr
 
 canal_shift = canal_dir+"/canal_output_shift.ser"
 canal_slide = canal_dir+"/canal_output_slide.ser"
@@ -3900,7 +3907,7 @@ prop = {
     'sequence' : seq
 }
 
-interbasepaircorrelation(
+interbpcorr(
     input_filename_shift=canal_shift,
     input_filename_slide=canal_slide,
     input_filename_rise=canal_rise,

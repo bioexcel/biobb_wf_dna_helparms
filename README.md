@@ -30,20 +30,25 @@ git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git
 cd biobb_wf_dna_helparms
 conda env create -f conda_env/environment.yml
 conda activate biobb_dna_helparms_tutorial
-jupyter-nbextension enable --py --user widgetsnbextension
 jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipynb
+```
+
+Please execute the following commands before launching the Jupyter Notebook if you experience some issues with some widgets:
+
+```console
+jupyter-nbextension enable --py --user widgetsnbextension
 ```
 
 ***
 
 ## Version
-2021.3 Release
+2022.3 Release
 
 ## Copyright & Licensing
 This software has been developed in the [MMB group](http://mmb.irbbarcelona.org) at the [BSC](http://www.bsc.es/) & [IRB](https://www.irbbarcelona.org/) for the [European BioExcel](http://bioexcel.eu/), funded by the European Commission (EU H2020 [823830](http://cordis.europa.eu/projects/823830), EU H2020 [675728](http://cordis.europa.eu/projects/675728)).
 
-* (c) 2015-2021 [Barcelona Supercomputing Center](https://www.bsc.es/)
-* (c) 2015-2021 [Institute for Research in Biomedicine](https://www.irbbarcelona.org/)
+* (c) 2015-2022 [Barcelona Supercomputing Center](https://www.bsc.es/)
+* (c) 2015-2022 [Institute for Research in Biomedicine](https://www.irbbarcelona.org/)
 
 Licensed under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0), see the file LICENSE for details.

@@ -14527,12 +14527,16 @@ a.anchor-link {
 <li><a href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>: Interactive HTML widgets for Jupyter notebooks and the IPython kernel.</li>
 <li><a href="https://matplotlib.org/">matplotlib</a>: Comprehensive library for creating static, animated, and interactive visualizations in Python. </li>
 </ul>
-<h3 id="Conda-Installation-and-Launch">Conda Installation and Launch<a class="anchor-link" href="#Conda-Installation-and-Launch">&#182;</a></h3><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git</span>
+<h3 id="Conda-Installation-and-Launch">Conda Installation and Launch<a class="anchor-link" href="#Conda-Installation-and-Launch">&#182;</a></h3>
+<div class="highlight"><pre><span></span><span class="go">git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git</span>
 <span class="go">cd biobb_wf_dna_helparms</span>
 <span class="go">conda env create -f conda_env/environment.yml</span>
 <span class="go">conda activate biobb_dna_helparms_tutorial</span>
-<span class="go">jupyter-nbextension enable --py --user widgetsnbextension</span>
 <span class="go">jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb</span>
+</pre></div>
+<p>Please execute the following commands before launching the Jupyter Notebook if you experience some issues with some widgets:</p>
+<div class="highlight"><pre>
+<span class="go">jupyter-nbextension enable --py --user widgetsnbextension</span>
 </pre></div>
 <hr>
 <h2 id="Pipeline-steps">Pipeline steps<a class="anchor-link" href="#Pipeline-steps">&#182;</a></h2><ol>
@@ -14550,12 +14554,12 @@ a.anchor-link {
 <li><a href="#stiffness">Stiffness</a></li>
 <li><a href="#bimodality">Bimodality</a></li>
 <li><a href="#correlations">Correlations</a><ol>
-<li><a href="#intrasequencecorrelation">Sequence Correlations: Intra-base pairs</a></li>
-<li><a href="#intersequencecorrelation">Sequence Correlations: Inter-base pair steps</a></li>
-<li><a href="#intrahelparcorrelation">Helical Parameter Correlations: Intra-base pairs</a></li>
-<li><a href="#interhelparcorrelation">Helical Parameter Correlations: Inter-base pair steps</a></li>
-<li><a href="#intrabasepaircorrelation">Neighboring steps Correlations: Intra-base pairs</a></li>
-<li><a href="#interbasepaircorrelation">Neighboring steps Correlations: Inter-base pair steps</a></li>
+<li><a href="#intraseqcorr">Sequence Correlations: Intra-base pairs</a></li>
+<li><a href="#interseqcorr">Sequence Correlations: Inter-base pair steps</a></li>
+<li><a href="#intrahpcorr">Helical Parameter Correlations: Intra-base pairs</a></li>
+<li><a href="#interhpcorr">Helical Parameter Correlations: Inter-base pair steps</a></li>
+<li><a href="#intrabpcorr">Neighboring steps Correlations: Intra-base pairs</a></li>
+<li><a href="#interbpcorr">Neighboring steps Correlations: Inter-base pair steps</a></li>
 </ol>
 </li>
 <li><a href="#questions">Questions &amp; Comments</a></li>
@@ -14645,9 +14649,10 @@ a.anchor-link {
 <strong><em>Nucleic Acids Research, Volume 37, Issue 17, 1 September 2009, Pages 5917–5929</em></strong><br>
 <a href="https://doi.org/10.1093/nar/gkp608">https://doi.org/10.1093/nar/gkp608</a></p>
 <p><strong>CURVES+ web server for analyzing and visualizing the helical, backbone and groove parameters of nucleic acid structure.</strong><br>
-<em>R. Lavery, M. Moakher, J.H. Maddocks, D. Petkeviciute, K. Zakrzewska.</em><br>
-<strong><em>Nucleic Acids Res 2009, 37:5917-5929</em></strong><br>
-<a href="https://bisi.ibcp.fr/tools/curves_plus/">https://bisi.ibcp.fr/tools/curves_plus/</a></p>
+<em>C. Blanchet, M. Pasi, K. Zakrzewska, R. Lavery.</em><br>
+<strong><em>Nucleic Acids Research, Volume 39, Issue suppl_2, 1 July 2011, Pages W68–W73</em></strong><br>
+<a href="https://doi.org/10.1093/nar/gkr316">https://doi.org/10.1093/nar/gkr316</a> 
+<a href="http://curvesplus.bsc.es">http://curvesplus.bsc.es</a></p>
 <hr>
 <p><strong>Building Blocks</strong> used:</p>
 <ul>
@@ -14676,7 +14681,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.curvesplus.biobb_curves</span> <span class="kn">import</span> <span class="n">curves</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.curvesplus.biobb_curves</span> <span class="kn">import</span> <span class="n">biobb_curves</span>
 
 <span class="n">curves_out_lis</span> <span class="o">=</span> <span class="s2">&quot;curves.out.lis&quot;</span>
 <span class="n">curves_out_cda</span> <span class="o">=</span> <span class="s2">&quot;curves.out.cda&quot;</span>
@@ -14686,7 +14691,7 @@ a.anchor-link {
     <span class="s1">&#39;s2range&#39;</span> <span class="p">:</span> <span class="s1">&#39;24:13&#39;</span>
 <span class="p">}</span>
 
-<span class="n">curves</span><span class="p">(</span>
+<span class="n">biobb_curves</span><span class="p">(</span>
     <span class="n">input_struc_path</span><span class="o">=</span><span class="n">traj</span><span class="p">,</span>
     <span class="n">input_top_path</span><span class="o">=</span><span class="n">top</span><span class="p">,</span>
     <span class="n">output_lis_path</span><span class="o">=</span><span class="n">curves_out_lis</span><span class="p">,</span>
@@ -14713,7 +14718,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.curvesplus.biobb_canal</span> <span class="kn">import</span> <span class="n">canal</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.curvesplus.biobb_canal</span> <span class="kn">import</span> <span class="n">biobb_canal</span>
 
 <span class="n">canal_out</span> <span class="o">=</span> <span class="s2">&quot;canal.out.zip&quot;</span>
 
@@ -14722,7 +14727,7 @@ a.anchor-link {
     <span class="s1">&#39;histo&#39;</span> <span class="p">:</span> <span class="kc">True</span>
 <span class="p">}</span>
 
-<span class="n">canal</span><span class="p">(</span>
+<span class="n">biobb_canal</span><span class="p">(</span>
     <span class="n">input_cda_file</span><span class="o">=</span><span class="n">curves_out_cda</span><span class="p">,</span>
     <span class="n">input_lis_file</span><span class="o">=</span><span class="n">curves_out_lis</span><span class="p">,</span>
     <span class="n">output_zip_path</span><span class="o">=</span><span class="n">canal_out</span><span class="p">,</span>
@@ -14794,7 +14799,7 @@ a.anchor-link {
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">helparaverages</a> from <strong>biobb_dna.dna.dna_averages</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">dna_averages</a> from <strong>biobb_dna.dna.dna_averages</strong> </li>
 </ul>
 <hr>
 
@@ -14810,7 +14815,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">helparaverages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">dna_averages</span>
 
 <span class="n">helpar</span> <span class="o">=</span> <span class="s1">&#39;rise&#39;</span>
 
@@ -14823,7 +14828,7 @@ a.anchor-link {
     <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
 <span class="p">}</span>
 
-<span class="n">helparaverages</span><span class="p">(</span>
+<span class="n">dna_averages</span><span class="p">(</span>
     <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
     <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_averages_csv_path</span><span class="p">,</span>
     <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_averages_jpg_path</span><span class="p">,</span>
@@ -15011,7 +15016,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">helparaverages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">dna_averages</span>
 
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">base_pair_step</span><span class="p">:</span>
 
@@ -15024,7 +15029,7 @@ a.anchor-link {
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helparaverages</span><span class="p">(</span>
+    <span class="n">dna_averages</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_averages_csv_path</span><span class="p">,</span>
         <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_averages_jpg_path</span><span class="p">,</span>
@@ -15234,7 +15239,7 @@ Helical Parameter: tilt
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">helparaverages</a> from <strong>biobb_dna.dna.dna_averages</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">dna_averages</a> from <strong>biobb_dna.dna.dna_averages</strong> </li>
 </ul>
 <hr>
 
@@ -15250,7 +15255,7 @@ Helical Parameter: tilt
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">helparaverages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">dna_averages</span>
 
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">base_pair</span><span class="p">:</span>
 
@@ -15264,7 +15269,7 @@ Helical Parameter: tilt
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helparaverages</span><span class="p">(</span>
+    <span class="n">dna_averages</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_averages_csv_path</span><span class="p">,</span>
         <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_averages_jpg_path</span><span class="p">,</span>
@@ -15479,7 +15484,7 @@ Helical Parameter: opening
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">helparaverages</a> from <strong>biobb_dna.dna.averages</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">dna_averages</a> from <strong>biobb_dna.dna.averages</strong> </li>
 </ul>
 <hr>
 
@@ -15495,7 +15500,7 @@ Helical Parameter: opening
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">helparaverages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">dna_averages</span>
 
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">axis_base_pairs</span><span class="p">:</span>
 
@@ -15510,7 +15515,7 @@ Helical Parameter: opening
 <span class="c1">#        &#39;seqpos&#39;: [4,3]</span>
     <span class="p">}</span>
 
-    <span class="n">helparaverages</span><span class="p">(</span>
+    <span class="n">dna_averages</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_averages_csv_path</span><span class="p">,</span>
         <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_averages_jpg_path</span><span class="p">,</span>
@@ -15697,7 +15702,7 @@ Helical Parameter: ydisp
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">helparaverages</a> from <strong>biobb_dna.dna.dna_averages</strong></li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_averages">dna_averages</a> from <strong>biobb_dna.dna.dna_averages</strong></li>
 </ul>
 <hr>
 
@@ -15713,7 +15718,7 @@ Helical Parameter: ydisp
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">helparaverages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_averages</span> <span class="kn">import</span> <span class="n">dna_averages</span>
 
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">grooves</span><span class="p">:</span>
 
@@ -15727,7 +15732,7 @@ Helical Parameter: ydisp
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helparaverages</span><span class="p">(</span>
+    <span class="n">dna_averages</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_averages_csv_path</span><span class="p">,</span>
         <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_averages_jpg_path</span><span class="p">,</span>
@@ -16904,7 +16909,7 @@ title="BI/BII population" width="300" />
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_timeseries">helpartimeseries</a> from <strong>biobb_dna.dna.dna_timeseries</strong></li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_timeseries">dna_timeseries</a> from <strong>biobb_dna.dna.dna_timeseries</strong></li>
 </ul>
 <hr>
 
@@ -16921,7 +16926,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="c1"># Modify the next variable to extract time series values for a different helical parameter</span>
 <span class="c1"># Possible values are: </span>
@@ -16942,7 +16947,7 @@ title="BI/BII population" width="300" />
     <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
 <span class="p">}</span>
 
-<span class="n">helpartimeseries</span><span class="p">(</span>
+<span class="n">dna_timeseries</span><span class="p">(</span>
     <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
     <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_file_path</span><span class="p">,</span>
     <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17505,7 +17510,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="n">output_timeseries_bps_file_paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">base_pair_step</span><span class="p">:</span>
@@ -17518,7 +17523,7 @@ title="BI/BII population" width="300" />
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helpartimeseries</span><span class="p">(</span>
+    <span class="n">dna_timeseries</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_bps_file_paths</span><span class="p">[</span><span class="n">helpar</span><span class="p">],</span>
         <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17559,7 +17564,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="n">output_timeseries_bp_file_paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">base_pair</span><span class="p">:</span>
@@ -17572,7 +17577,7 @@ title="BI/BII population" width="300" />
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helpartimeseries</span><span class="p">(</span>
+    <span class="n">dna_timeseries</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_bp_file_paths</span><span class="p">[</span><span class="n">helpar</span><span class="p">],</span>
         <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17613,7 +17618,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="n">output_timeseries_bp_file_paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">axis_base_pairs</span><span class="p">:</span>
@@ -17626,7 +17631,7 @@ title="BI/BII population" width="300" />
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helpartimeseries</span><span class="p">(</span>
+    <span class="n">dna_timeseries</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_bp_file_paths</span><span class="p">[</span><span class="n">helpar</span><span class="p">],</span>
         <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17664,7 +17669,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="n">output_timeseries_bp_file_paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">grooves</span><span class="p">:</span>
@@ -17677,7 +17682,7 @@ title="BI/BII population" width="300" />
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helpartimeseries</span><span class="p">(</span>
+    <span class="n">dna_timeseries</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_bp_file_paths</span><span class="p">[</span><span class="n">helpar</span><span class="p">],</span>
         <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17715,7 +17720,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">helpartimeseries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_timeseries</span> <span class="kn">import</span> <span class="n">dna_timeseries</span>
 
 <span class="n">output_timeseries_bp_file_paths</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">helpar</span> <span class="ow">in</span> <span class="n">backbone_torsions</span><span class="p">:</span>
@@ -17728,7 +17733,7 @@ title="BI/BII population" width="300" />
         <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="n">seq</span>
     <span class="p">}</span>
 
-    <span class="n">helpartimeseries</span><span class="p">(</span>
+    <span class="n">dna_timeseries</span><span class="p">(</span>
         <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
         <span class="n">output_zip_path</span><span class="o">=</span><span class="n">output_timeseries_bp_file_paths</span><span class="p">[</span><span class="n">helpar</span><span class="p">],</span>
         <span class="n">properties</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
@@ -17766,8 +17771,8 @@ title="BI/BII population" width="300" />
 <hr>
 <p><strong>Building Blocks</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.average_stiffness">averagestiffness</a> from <strong>biobb_dna.stiffness.average_stiffness</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.basepair_stiffness">bpstiffness</a> from <strong>biobb_dna.stiffness.basepair_stiffness</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.average_stiffness">average_stiffness</a> from <strong>biobb_dna.stiffness.average_stiffness</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/stiffness.html#module-stiffness.basepair_stiffness">basepair_stiffness</a> from <strong>biobb_dna.stiffness.basepair_stiffness</strong> </li>
 </ul>
 <hr>
 
@@ -17778,7 +17783,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.stiffness.average_stiffness</span> <span class="kn">import</span> <span class="n">averagestiffness</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.stiffness.average_stiffness</span> <span class="kn">import</span> <span class="n">average_stiffness</span>
 
 <span class="n">helpar</span> <span class="o">=</span> <span class="s2">&quot;twist&quot;</span> <span class="c1"># Modify this variable to extract time series values for a different helical parameter</span>
 
@@ -17790,7 +17795,7 @@ title="BI/BII population" width="300" />
     <span class="s1">&#39;sequence&#39;</span> <span class="p">:</span> <span class="n">seq</span>
 <span class="p">}</span>
 
-<span class="n">averagestiffness</span><span class="p">(</span>
+<span class="n">average_stiffness</span><span class="p">(</span>
     <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
     <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_stiffness_csv_path</span><span class="p">,</span>
     <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_stiffness_jpg_path</span><span class="p">,</span>
@@ -17957,7 +17962,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.stiffness.basepair_stiffness</span> <span class="kn">import</span> <span class="n">bpstiffness</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.stiffness.basepair_stiffness</span> <span class="kn">import</span> <span class="n">basepair_stiffness</span>
 
 <span class="n">timeseries_shift</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_shift_&quot;</span> <span class="o">+</span> <span class="n">timesel</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span>
 <span class="n">timeseries_slide</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_slide_&quot;</span> <span class="o">+</span> <span class="n">timesel</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span>
@@ -17969,7 +17974,7 @@ title="BI/BII population" width="300" />
 <span class="n">output_stiffness_bps_csv_path</span> <span class="o">=</span> <span class="s2">&quot;stiffness_bps.csv&quot;</span>
 <span class="n">output_stiffness_bps_jpg_path</span> <span class="o">=</span> <span class="s2">&quot;stiffness_bps.jpg&quot;</span>
 
-<span class="n">bpstiffness</span><span class="p">(</span>
+<span class="n">basepair_stiffness</span><span class="p">(</span>
     <span class="n">input_filename_shift</span><span class="o">=</span><span class="n">timeseries_shift</span><span class="p">,</span>
     <span class="n">input_filename_slide</span><span class="o">=</span><span class="n">timeseries_slide</span><span class="p">,</span>
     <span class="n">input_filename_rise</span><span class="o">=</span><span class="n">timeseries_rise</span><span class="p">,</span>
@@ -18173,7 +18178,7 @@ title="BI/BII population" width="300" />
 <hr>
 <p><strong>Building Block</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_bimodality">helparbimodality</a> from <strong>biobb_dna.dna.bimodality</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/dna.html#module-dna.dna_bimodality">dna_bimodality</a> from <strong>biobb_dna.dna.bimodality</strong> </li>
 </ul>
 <hr>
 
@@ -18184,7 +18189,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_bimodality</span> <span class="kn">import</span> <span class="n">helparbimodality</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.dna.dna_bimodality</span> <span class="kn">import</span> <span class="n">dna_bimodality</span>
 
 <span class="n">helpar</span> <span class="o">=</span> <span class="s2">&quot;twist&quot;</span>
 <span class="n">input_csv</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_&quot;</span><span class="o">+</span><span class="n">helpar</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">timesel</span><span class="o">.</span><span class="n">value</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span>
@@ -18196,7 +18201,7 @@ title="BI/BII population" width="300" />
 <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="mi">500</span>
 <span class="p">}</span>
-<span class="n">helparbimodality</span><span class="p">(</span>
+<span class="n">dna_bimodality</span><span class="p">(</span>
     <span class="n">input_csv_file</span><span class="o">=</span><span class="n">input_csv</span><span class="p">,</span>
     <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_bimodality_csv</span><span class="p">,</span>
     <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_bimodality_jpg</span><span class="p">,</span>
@@ -18267,12 +18272,12 @@ title="BI/BII population" width="300" />
 <p><a id="correlations"></a></p>
 <h2 id="Correlations">Correlations<a class="anchor-link" href="#Correlations">&#182;</a></h2><p>Sequence-dependent <strong>correlation movements</strong> have been identified in DNA conformational analysis at the <strong>base pair</strong> and <strong>base pair-step</strong> level. <strong>Trinucleotides</strong> were found to show moderate to high <strong>correlations</strong> in some <strong>intra base pair helical parameter</strong> (e.g. shear-opening, shear-stretch, stagger-buckle). Similarly, some <strong>tetranucleotides</strong> are showing strong <strong>correlations</strong> in their <strong>inter base pair helical parameters</strong> (e.g. shift-tilt, slide-twist, rise-tilt, shift-slide, and shift-twist in RR steps), with <strong>negative correlations</strong> in the shift-slide and roll-twist cases. <strong>Correlations</strong> are also observed in the combination of <strong>inter- and intra-helical parameters</strong> (e.g. shift-opening, rise-buckle, stagger-tilt). <strong>Correlations</strong> analysis can be also extended to <strong>neighboring steps</strong> (e.g. twist in the central YR step of XYRR tetranucleotides with slide in the adjacent RR step).</p>
 <ul>
-<li><a href="#intrasequencecorrelation">Sequence Correlations: Intra-base pairs</a></li>
-<li><a href="#intersequencecorrelation">Sequence Correlations: Inter-base pair steps</a></li>
-<li><a href="#intrahelparcorrelation">Helical Parameter Correlations: Intra-base pairs</a></li>
-<li><a href="#interhelparcorrelation">Helical Parameter Correlations: Inter-base pair steps</a></li>
-<li><a href="#intrabasepaircorrelation">Neighboring steps Correlations: Intra-base pairs</a></li>
-<li><a href="#interbasepaircorrelation">Neighboring steps Correlations: Inter-base pair steps</a></li>
+<li><a href="#intraseqcorr">Sequence Correlations: Intra-base pairs</a></li>
+<li><a href="#interseqcorr">Sequence Correlations: Inter-base pair steps</a></li>
+<li><a href="#intrahpcorr">Helical Parameter Correlations: Intra-base pairs</a></li>
+<li><a href="#interhpcorr">Helical Parameter Correlations: Inter-base pair steps</a></li>
+<li><a href="#intrabpcorr">Neighboring steps Correlations: Intra-base pairs</a></li>
+<li><a href="#interbpcorr">Neighboring steps Correlations: Inter-base pair steps</a></li>
 </ul>
 <hr>
 <p><img src="https://mmb.irbbarcelona.org/NAFlex2/images/rise_correlations.png" alt="Rise correlations"
@@ -18285,12 +18290,12 @@ title="BI/BII population" width="300" />
 <hr>
 <p><strong>Building Blocks</strong> used:</p>
 <ul>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#module-intrabp_correlations.intraseqcorr">intrasequencecorrelation</a> from <strong>biobb_dna.intrabp_correlations.intraseqcorr</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interseqcorr-module">intersequencecorrelation</a> from <strong>biobb_dna.interbp_correlations.interseqcorr</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrahpcorr-module">intrahelparcorrelation</a> from <strong>biobb_dna.intrabp_correlations.intrahpcorr</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interhpcorr-module">interhelparcorrelation</a> from <strong>biobb_dna.interbp_correlations.interhpcorr</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrabpcorr-module">intrabasepaircorrelation</a> from <strong>biobb_dna.intrabp_correlations.intrabpcorr</strong> </li>
-<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interbpcorr-module">interbasepaircorrelation</a> from <strong>biobb_dna.interbp_correlations.interbpcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#module-intrabp_correlations.intraseqcorr">intraseqcorr</a> from <strong>biobb_dna.intrabp_correlations.intraseqcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interseqcorr-module">interseqcorr</a> from <strong>biobb_dna.interbp_correlations.interseqcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrahpcorr-module">intrahpcorr</a> from <strong>biobb_dna.intrabp_correlations.intrahpcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interhpcorr-module">interhpcorr</a> from <strong>biobb_dna.interbp_correlations.interhpcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/intrabp_correlations.html#intrabp-correlations-intrabpcorr-module">intrabpcorr</a> from <strong>biobb_dna.intrabp_correlations.intrabpcorr</strong> </li>
+<li><a href="https://biobb-dna.readthedocs.io/en/latest/interbp_correlations.html#interbp-correlations-interbpcorr-module">interbpcorr</a> from <strong>biobb_dna.interbp_correlations.interbpcorr</strong> </li>
 </ul>
 <hr>
 
@@ -18298,7 +18303,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="intrasequencecorrelation"></a></p>
+<p><a id="intraseqcorr"></a></p>
 <h3 id="Sequence-Correlations:-Intra-base-pairs">Sequence Correlations: Intra-base pairs<a class="anchor-link" href="#Sequence-Correlations:-Intra-base-pairs">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -18307,7 +18312,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intraseqcorr</span> <span class="kn">import</span> <span class="n">intrasequencecorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intraseqcorr</span> <span class="kn">import</span> <span class="n">intraseqcorr</span>
 
 <span class="n">input_file_path</span> <span class="o">=</span> <span class="s2">&quot;canal_out/canal_output&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">helpar</span> <span class="o">+</span> <span class="s2">&quot;.ser&quot;</span>
 <span class="n">output_intrabp_correlation_csv_path</span> <span class="o">=</span> <span class="n">helpar</span><span class="o">+</span><span class="s1">&#39;.intrabp_correlation.csv&#39;</span>
@@ -18318,7 +18323,7 @@ title="BI/BII population" width="300" />
 <span class="c1">#    &#39;helpar_name&#39; : &#39;Rise&#39;</span>
 <span class="p">}</span>
 
-<span class="n">intrasequencecorrelation</span><span class="p">(</span>
+<span class="n">intraseqcorr</span><span class="p">(</span>
     <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
     <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_intrabp_correlation_csv_path</span><span class="p">,</span>
     <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_intrabp_correlation_jpg_path</span><span class="p">,</span>
@@ -18581,7 +18586,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="intersequencecorrelation"></a></p>
+<p><a id="interseqcorr"></a></p>
 <h3 id="Sequence-Correlations:-Inter-base-pair-steps">Sequence Correlations: Inter-base pair steps<a class="anchor-link" href="#Sequence-Correlations:-Inter-base-pair-steps">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -18590,7 +18595,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interseqcorr</span> <span class="kn">import</span> <span class="n">intersequencecorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interseqcorr</span> <span class="kn">import</span> <span class="n">interseqcorr</span>
 
 <span class="n">input_file_path</span> <span class="o">=</span> <span class="s2">&quot;canal_out/canal_output&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">helpar</span> <span class="o">+</span> <span class="s2">&quot;.ser&quot;</span>
 <span class="n">output_interbp_correlation_csv_path</span> <span class="o">=</span> <span class="n">helpar</span><span class="o">+</span><span class="s1">&#39;.interbp_correlation.csv&#39;</span>
@@ -18601,7 +18606,7 @@ title="BI/BII population" width="300" />
 <span class="c1">#    &#39;helpar_name&#39; : &#39;Rise&#39;</span>
 <span class="p">}</span>
 
-<span class="n">intersequencecorrelation</span><span class="p">(</span>
+<span class="n">interseqcorr</span><span class="p">(</span>
     <span class="n">input_ser_path</span><span class="o">=</span><span class="n">input_file_path</span><span class="p">,</span>
     <span class="n">output_csv_path</span><span class="o">=</span><span class="n">output_interbp_correlation_csv_path</span><span class="p">,</span>
     <span class="n">output_jpg_path</span><span class="o">=</span><span class="n">output_interbp_correlation_jpg_path</span><span class="p">,</span>
@@ -18864,7 +18869,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="intrahelparcorrelation"></a></p>
+<p><a id="intrahpcorr"></a></p>
 <h3 id="Helical-Parameter-Correlations:-Intra-base-pair">Helical Parameter Correlations: Intra-base pair<a class="anchor-link" href="#Helical-Parameter-Correlations:-Intra-base-pair">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -18873,7 +18878,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intrahpcorr</span> <span class="kn">import</span> <span class="n">intrahelparcorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intrahpcorr</span> <span class="kn">import</span> <span class="n">intrahpcorr</span>
 
 <span class="n">timeseries_shear</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_shear_&quot;</span><span class="o">+</span><span class="n">timesel</span><span class="o">.</span><span class="n">value</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.csv&quot;</span>
 <span class="n">timeseries_stretch</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_stretch_&quot;</span><span class="o">+</span><span class="n">timesel</span><span class="o">.</span><span class="n">value</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.csv&quot;</span>
@@ -18885,7 +18890,7 @@ title="BI/BII population" width="300" />
 <span class="n">output_helpar_bp_correlation_csv_path</span> <span class="o">=</span> <span class="s2">&quot;helpar_bp_correlation.csv&quot;</span>
 <span class="n">output_helpar_bp_correlation_jpg_path</span> <span class="o">=</span> <span class="s2">&quot;helpar_bp_correlation.jpg&quot;</span>
 
-<span class="n">intrahelparcorrelation</span><span class="p">(</span>
+<span class="n">intrahpcorr</span><span class="p">(</span>
     <span class="n">input_filename_shear</span><span class="o">=</span><span class="n">timeseries_shear</span><span class="p">,</span>
     <span class="n">input_filename_stretch</span><span class="o">=</span><span class="n">timeseries_stretch</span><span class="p">,</span>
     <span class="n">input_filename_stagger</span><span class="o">=</span><span class="n">timeseries_stagger</span><span class="p">,</span>
@@ -19068,7 +19073,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="interhelparcorrelation"></a></p>
+<p><a id="interhpcorr"></a></p>
 <h3 id="Helical-Parameter-Correlations:-Inter-base-pair-steps">Helical Parameter Correlations: Inter-base pair steps<a class="anchor-link" href="#Helical-Parameter-Correlations:-Inter-base-pair-steps">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -19077,7 +19082,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interhpcorr</span> <span class="kn">import</span> <span class="n">interhelparcorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interhpcorr</span> <span class="kn">import</span> <span class="n">interhpcorr</span>
 
 <span class="n">timeseries_shift</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_shift_&quot;</span><span class="o">+</span><span class="n">timesel</span><span class="o">.</span><span class="n">value</span><span class="o">+</span><span class="s2">&quot;.csv&quot;</span>
 <span class="n">timeseries_slide</span> <span class="o">=</span> <span class="n">timeseries_dir</span><span class="o">+</span><span class="s2">&quot;/series_slide_&quot;</span><span class="o">+</span><span class="n">timesel</span><span class="o">.</span><span class="n">value</span><span class="o">+</span><span class="s2">&quot;.csv&quot;</span>
@@ -19089,7 +19094,7 @@ title="BI/BII population" width="300" />
 <span class="n">output_helpar_bps_correlation_csv_path</span> <span class="o">=</span> <span class="s2">&quot;helpar_bps_correlation.csv&quot;</span>
 <span class="n">output_helpar_bps_correlation_jpg_path</span> <span class="o">=</span> <span class="s2">&quot;helpar_bps_correlation.jpg&quot;</span>
 
-<span class="n">interhelparcorrelation</span><span class="p">(</span>
+<span class="n">interhpcorr</span><span class="p">(</span>
     <span class="n">input_filename_shift</span><span class="o">=</span><span class="n">timeseries_shift</span><span class="p">,</span>
     <span class="n">input_filename_slide</span><span class="o">=</span><span class="n">timeseries_slide</span><span class="p">,</span>
     <span class="n">input_filename_rise</span><span class="o">=</span><span class="n">timeseries_rise</span><span class="p">,</span>
@@ -19272,7 +19277,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="intrabasepaircorrelation"></a></p>
+<p><a id="intrabpcorr"></a></p>
 <h3 id="Neighboring-steps-Correlations:-Intra-base-pair">Neighboring steps Correlations: Intra-base pair<a class="anchor-link" href="#Neighboring-steps-Correlations:-Intra-base-pair">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -19281,7 +19286,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intrabpcorr</span> <span class="kn">import</span> <span class="n">intrabasepaircorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.intrabp_correlations.intrabpcorr</span> <span class="kn">import</span> <span class="n">intrabpcorr</span>
 
 <span class="n">canal_shear</span> <span class="o">=</span> <span class="n">canal_dir</span><span class="o">+</span><span class="s2">&quot;/canal_output_shear.ser&quot;</span>
 <span class="n">canal_stretch</span> <span class="o">=</span> <span class="n">canal_dir</span><span class="o">+</span><span class="s2">&quot;/canal_output_stretch.ser&quot;</span>
@@ -19297,7 +19302,7 @@ title="BI/BII population" width="300" />
     <span class="s1">&#39;sequence&#39;</span> <span class="p">:</span> <span class="n">seq</span>
 <span class="p">}</span>
 
-<span class="n">intrabasepaircorrelation</span><span class="p">(</span>
+<span class="n">intrabpcorr</span><span class="p">(</span>
     <span class="n">input_filename_shear</span><span class="o">=</span><span class="n">canal_shear</span><span class="p">,</span>
     <span class="n">input_filename_stretch</span><span class="o">=</span><span class="n">canal_stretch</span><span class="p">,</span>
     <span class="n">input_filename_stagger</span><span class="o">=</span><span class="n">canal_stagger</span><span class="p">,</span>
@@ -19676,7 +19681,7 @@ title="BI/BII population" width="300" />
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id="interbasepaircorrelation"></a></p>
+<p><a id="interbpcorr"></a></p>
 <h3 id="Neighboring-steps-Correlations:-Inter-base-pair-steps">Neighboring steps Correlations: Inter-base pair steps<a class="anchor-link" href="#Neighboring-steps-Correlations:-Inter-base-pair-steps">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -19685,7 +19690,7 @@ title="BI/BII population" width="300" />
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interbpcorr</span> <span class="kn">import</span> <span class="n">interbasepaircorrelation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">biobb_dna.interbp_correlations.interbpcorr</span> <span class="kn">import</span> <span class="n">interbpcorr</span>
 
 <span class="n">canal_shift</span> <span class="o">=</span> <span class="n">canal_dir</span><span class="o">+</span><span class="s2">&quot;/canal_output_shift.ser&quot;</span>
 <span class="n">canal_slide</span> <span class="o">=</span> <span class="n">canal_dir</span><span class="o">+</span><span class="s2">&quot;/canal_output_slide.ser&quot;</span>
@@ -19701,7 +19706,7 @@ title="BI/BII population" width="300" />
     <span class="s1">&#39;sequence&#39;</span> <span class="p">:</span> <span class="n">seq</span>
 <span class="p">}</span>
 
-<span class="n">interbasepaircorrelation</span><span class="p">(</span>
+<span class="n">interbpcorr</span><span class="p">(</span>
     <span class="n">input_filename_shift</span><span class="o">=</span><span class="n">canal_shift</span><span class="p">,</span>
     <span class="n">input_filename_slide</span><span class="o">=</span><span class="n">canal_slide</span><span class="p">,</span>
     <span class="n">input_filename_rise</span><span class="o">=</span><span class="n">canal_rise</span><span class="p">,</span>

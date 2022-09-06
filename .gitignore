@@ -1,3 +1,5 @@
+.DS_Store
+
 guidelines.md
 *.pdb
 *.gro

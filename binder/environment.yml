@@ -3,8 +3,8 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - biobb_dna==3.6.2
+  - biobb_dna==3.8.2
   - matplotlib
   - conda
-  - ipywidgets
+  - ipywidgets==7.6.6
   - ipykernel
