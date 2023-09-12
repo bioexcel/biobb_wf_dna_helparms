@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - biobb_dna==4.0.0
+  - biobb_dna==4.1.0
   - nb_conda_kernels
   - matplotlib
   - conda
