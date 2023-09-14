@@ -7,8 +7,5 @@ dependencies:
   - nb_conda_kernels
   - matplotlib
   - conda
-  - ipywidgets==7.6.6
-  - jupyter_client==7.3.2
-  - tornado==6.1
   - importlib_metadata
   - ipykernel

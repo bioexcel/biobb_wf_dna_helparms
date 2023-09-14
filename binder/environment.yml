@@ -7,7 +7,4 @@ dependencies:
   - biobb_dna==4.1.0
   - matplotlib
   - conda
-  - ipywidgets==7.6.6
-  - jupyter_client==7.3.2
-  - tornado==6.1
   - ipykernel
