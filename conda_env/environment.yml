@@ -7,5 +7,5 @@ dependencies:
   - nb_conda_kernels
   - matplotlib
   - conda
-  # - traitlets==5.9.0
+  - traitlets==5.9.0
   - ipykernel
