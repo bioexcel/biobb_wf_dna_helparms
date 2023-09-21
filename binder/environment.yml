@@ -6,5 +6,4 @@ dependencies:
   - python==3.8
   - biobb_dna==4.1.0
   - matplotlib
-  - conda
   - ipykernel

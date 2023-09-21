@@ -6,6 +6,5 @@ dependencies:
   - biobb_dna==4.1.0
   - nb_conda_kernels
   - matplotlib
-  - conda
-  - traitlets==5.9.0
+  - jupyter
   - ipykernel
