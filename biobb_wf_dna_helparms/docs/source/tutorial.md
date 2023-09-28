@@ -13,27 +13,18 @@ This tutorial aims to illustrate the process of **extracting structural and dyna
  
 ### Auxiliar libraries used
 
- - [nb_conda_kernels](https://github.com/Anaconda-Platform/nb_conda_kernels): Enables a Jupyter Notebook or JupyterLab application in one conda environment to access kernels for Python, R, and other languages found in other environments.
- - [ipywidgets](https://github.com/jupyter-widgets/ipywidgets): Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
- - [matplotlib](https://matplotlib.org/): Comprehensive library for creating static, animated, and interactive visualizations in Python. 
+* [jupyter](https://jupyter.org/): Free software, open standards, and web services for interactive computing across all programming languages.
+* [matplotlib](https://matplotlib.org/): Comprehensive library for creating static, animated, and interactive visualizations in Python.
 
-
-### Conda Installation and Launch
+### Conda Installation & Launch
 
 ```console
 git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git
 cd biobb_wf_dna_helparms
 conda env create -f conda_env/environment.yml
 conda activate biobb_dna_helparms_tutorial
-jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb
-``` 
-
-Please execute the following commands before launching the Jupyter Notebook if you experience some issues with some widgets:
-
-```console
-jupyter-nbextension enable --py --user widgetsnbextension
-``` 
-
+jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipynb
+```
 
 ***
 ## Pipeline steps

@@ -14523,20 +14523,15 @@ a.anchor-link {
 <li><a href="https://github.com/bioexcel/biobb_dna">biobb_dna</a>: Tools to analyse DNA structures and MD trajectories.</li>
 </ul>
 <h3 id="Auxiliar-libraries-used">Auxiliar libraries used<a class="anchor-link" href="#Auxiliar-libraries-used">&#182;</a></h3><ul>
-<li><a href="https://github.com/Anaconda-Platform/nb_conda_kernels">nb_conda_kernels</a>: Enables a Jupyter Notebook or JupyterLab application in one conda environment to access kernels for Python, R, and other languages found in other environments.</li>
-<li><a href="https://github.com/jupyter-widgets/ipywidgets">ipywidgets</a>: Interactive HTML widgets for Jupyter notebooks and the IPython kernel.</li>
+  <li><a href="https://jupyter.org/">jupyter</a>: Free software, open standards, and web services for interactive computing across all programming languages.</li>
 <li><a href="https://matplotlib.org/">matplotlib</a>: Comprehensive library for creating static, animated, and interactive visualizations in Python. </li>
 </ul>
 <h3 id="Conda-Installation-and-Launch">Conda Installation and Launch<a class="anchor-link" href="#Conda-Installation-and-Launch">&#182;</a></h3>
-<div class="highlight"><pre><span></span><span class="go">git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git</span>
+<div class="highlight"><pre><span class="go">git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git</span>
 <span class="go">cd biobb_wf_dna_helparms</span>
 <span class="go">conda env create -f conda_env/environment.yml</span>
 <span class="go">conda activate biobb_dna_helparms_tutorial</span>
 <span class="go">jupyter-notebook biobb_wf_md_setup/notebooks/biobb_dna_helparms_tutorial.ipynb</span>
-</pre></div>
-<p>Please execute the following commands before launching the Jupyter Notebook if you experience some issues with some widgets:</p>
-<div class="highlight"><pre>
-<span class="go">jupyter-nbextension enable --py --user widgetsnbextension</span>
 </pre></div>
 <hr>
 <h2 id="Pipeline-steps">Pipeline steps<a class="anchor-link" href="#Pipeline-steps">&#182;</a></h2><ol>
