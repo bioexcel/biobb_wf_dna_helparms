@@ -31,6 +31,13 @@ conda env create -f conda_env/environment.yml
 conda activate biobb_dna_helparms_tutorial
 jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipynb
 ```
+***
+
+## Tutorial
+
+Click here to [view tutorial in Read the Docs](https://biobb-wf-dna-helparms.readthedocs.io/en/latest/tutorial.html)
+
+Click here to [execute tutorial in Binder](https://mybinder.org/v2/gh/bioexcel/biobb_wf_dna_helparms/HEAD?labpath=biobb_wf_dna_helparms%2Fnotebooks%2Fbiobb_dna_helparms_tutorial.ipynb)
 
 ***
 
