@@ -4,7 +4,5 @@ channels:
   - bioconda
 dependencies:
   - biobb_dna==4.1.0
-  - nb_conda_kernels
   - matplotlib
   - jupyter
-  - ipykernel
