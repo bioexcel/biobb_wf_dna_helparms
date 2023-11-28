@@ -14,3 +14,7 @@ build:
 sphinx:
    configuration: biobb_wf_dna_helparms/docs/source/conf.py
 
+python:
+  install:
+    - requirements: biobb_wf_dna_helparms/docs/requirements.txt
+
