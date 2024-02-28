@@ -2,7 +2,7 @@
 Based on the [**NAFlex**](https://mmb.irbbarcelona.org/NAFlex) server and in particular in its [**Nucleic Acids Analysis**](https://mmb.irbbarcelona.org/NAFlex/help.php?id=tutorialAnalysisNA) section. 
 
 ***
-This tutorial aims to illustrate the process of **extracting structural and dynamical properties** from a **DNA MD trajectory helical parameters**, step by step, using the **BioExcel Building Blocks library (biobb)**. The particular example used is the **Drew Dickerson Dodecamer** sequence -CGCGAATTCGCG- (PDB code [1BNA](https://www.rcsb.org/structure/1BNA)). The trajectory used is a  500ns-long MD simulation taken from the [BigNASim](https://mmb.irbbarcelona.org/BIGNASim/) database ([NAFlex_DDD_II](https://mmb.irbbarcelona.org/BIGNASim/getStruc.php?idCode=NAFlex_DDD_II) entry).  
+This tutorial aims to illustrate the process of **extracting structural and dynamical properties** from a **DNA MD trajectory helical parameters**, step by step, using the **BioExcel Building Blocks library (biobb)**. The particular example used is the **Drew Dickerson Dodecamer** sequence -CGCGAATTCGCG- (PDB code [1BNA](https://www.rcsb.org/structure/1BNA), [https://doi.org/10.2210/pdb1BNA/pdb](https://doi.org/10.2210/pdb1BNA/pdb)). The trajectory used is a  500ns-long MD simulation taken from the [BigNASim](https://mmb.irbbarcelona.org/BIGNASim/) database ([NAFlex_DDD_II](https://mmb.irbbarcelona.org/BIGNASim/getStruc.php?idCode=NAFlex_DDD_II) entry).  
 ***
 
 ## Settings

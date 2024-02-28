@@ -24,6 +24,8 @@ biobb_wf_dna_helparms/notebooks/*.jpg
 biobb_wf_dna_helparms/notebooks/*.gif
 biobb_wf_dna_helparms/notebooks/*.web.ipynb
 biobb_wf_dna_helparms/notebooks/*.docs.ipynb
+biobb_wf_dna_helparms/docs/notebooks/
+biobb_wf_dna_helparms/html/biobb_dna_helparms_tutorial.web.ipynb
 *.old.ipynb
 *.bk.ipynb
 \#*\#
