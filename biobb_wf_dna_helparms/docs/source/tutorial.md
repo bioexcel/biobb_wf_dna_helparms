@@ -11,7 +11,7 @@ This tutorial aims to illustrate the process of **extracting structural and dyna
 
  - [biobb_dna](https://github.com/bioexcel/biobb_dna): Tools to analyse DNA structures and MD trajectories.
  
-### Auxiliar libraries used
+### Auxiliary libraries used
 
 * [jupyter](https://jupyter.org/): Free software, open standards, and web services for interactive computing across all programming languages.
 * [matplotlib](https://matplotlib.org/): Comprehensive library for creating static, animated, and interactive visualizations in Python.
@@ -56,7 +56,7 @@ jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipy
 
 
 ```python
-# Auxiliar libraries
+# Auxiliary libraries
 
 import os
 import shutil
@@ -89,7 +89,7 @@ seq_comp = "CGCGAATTCGCG"
 traj = "TRAJ/structure.stripped.nc"
 top = "TRAJ/structure.stripped.top"
 
-# Auxiliar lists
+# Auxiliary lists
 grooves = ('majd','majw','mind','minw')
 axis_base_pairs = ('inclin','tip','xdisp','ydisp')
 base_pair = ('shear','stretch','stagger','buckle','propel','opening')

@@ -17,7 +17,7 @@ This tutorial aims to illustrate the process of **extracting structural and dyna
 
 *  [biobb_dna](https://github.com/bioexcel/biobb_dna): Tools to analyse DNA structures and MD trajectories.
 
-### Auxiliar libraries used
+### Auxiliary libraries used
 
 * [jupyter](https://jupyter.org/): Free software, open standards, and web services for interactive computing across all programming languages.
 * [matplotlib](https://matplotlib.org/): Comprehensive library for creating static, animated, and interactive visualizations in Python.
