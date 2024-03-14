@@ -1,0 +1,17 @@
+{
+  "@context": "http://schema.org",
+  "name": "Structural DNA helical parameters from MD trajectory workflow",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://raw.githubusercontent.com/bioexcel/biobb/master/references.jsonld",
+      "name": "biobb"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://raw.githubusercontent.com/bioexcel/biobb_dna/master/references.jsonld",
+      "name": "biobb_dna"
+    }
+  ]
+}
