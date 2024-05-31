@@ -22,7 +22,7 @@ This tutorial aims to illustrate the process of **extracting structural and dyna
 git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git
 cd biobb_wf_dna_helparms
 conda env create -f conda_env/environment.yml
-conda activate biobb_dna_helparms_tutorial
+conda activate biobb_wf_dna_helparms
 jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipynb
 ```
 
@@ -135,7 +135,7 @@ The extraction of **helical parameters** is then done in **two steps**:
 
 **Curves+** program needs a **trajectory** and its associated **topology**, and a couple of **ranges**, informing about the numeration of the two **DNA strands**: s1range and s2range.
 
-<div style="margin:10px 0;padding:15px;background:#b5e0dd"><strong>Important:</strong> Depending on the operating system used, the cell below can return an error about a missing <strong>.curvesplus</strong> folder. In this case, please copy the <strong>.curvesplus</strong> folder provided in the <strong>repository</strong> and copy it into the <strong>/path/to/anaconda3/envs/biobb_dna_helparms_tutorial</strong> folder in your computer.</div>
+<div style="margin:10px 0;padding:15px;background:#b5e0dd"><strong>Important:</strong> Depending on the operating system used, the cell below can return an error about a missing <strong>.curvesplus</strong> folder. In this case, please copy the <strong>.curvesplus</strong> folder provided in the <strong>repository</strong> and copy it into the <strong>/path/to/anaconda3/envs/biobb_wf_dna_helparms</strong> folder in your computer.</div>
 
 
 ```python

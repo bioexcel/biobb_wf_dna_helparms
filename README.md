@@ -29,7 +29,7 @@ This tutorial aims to illustrate the process of **extracting structural and dyna
 git clone https://github.com/bioexcel/biobb_wf_dna_helparms.git
 cd biobb_wf_dna_helparms
 conda env create -f conda_env/environment.yml
-conda activate biobb_dna_helparms_tutorial
+conda activate biobb_wf_dna_helparms
 jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_dna_helparms_tutorial.ipynb
 ```
 ***
