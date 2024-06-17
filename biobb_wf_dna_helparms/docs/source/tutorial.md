@@ -53,7 +53,58 @@ jupyter-notebook biobb_wf_dna_helparms/notebooks/biobb_wf_dna_helparms.ipynb
 	title="Bioexcel2 logo" width="400" />
 ***
 
+***
 
+## Initializing colab
+The two cells below are used only in case this notebook is executed via **Google Colab**. Take into account that, for running conda on **Google Colab**, the **condacolab** library must be installed. As [explained here](https://pypi.org/project/condacolab/), the installation requires a **kernel restart**, so when running this notebook in **Google Colab**, don't run all cells until this **installation** is properly **finished** and the **kernel** has **restarted**.
+
+
+```python
+# Only executed when using google colab
+import sys
+if 'google.colab' in sys.modules:
+  import subprocess
+  from pathlib import Path
+  try:
+    subprocess.run(["conda", "-V"], check=True)
+  except FileNotFoundError:
+    subprocess.run([sys.executable, "-m", "pip", "install", "condacolab"], check=True)
+    import condacolab
+    condacolab.install()
+    # Clone repository
+    repo_URL = "https://github.com/bioexcel/biobb_wf_dna_helparms.git"
+    repo_name = Path(repo_URL).name.split('.')[0]
+    if not Path(repo_name).exists():
+      subprocess.run(["mamba", "install", "-y", "git"], check=True)
+      subprocess.run(["git", "clone", repo_URL], check=True)
+      print("⏬ Repository properly cloned.")
+    # Install environment
+    print("⏳ Creating environment...")
+    env_file_path = f"{repo_name}/conda_env/environment.yml"
+    subprocess.run(["mamba", "env", "update", "-n", "base", "-f", env_file_path], check=True)
+    print("👍 Conda environment successfully created and updated.")
+```
+
+
+```python
+# Enable widgets for colab
+if 'google.colab' in sys.modules:
+  from google.colab import output
+  output.enable_custom_widget_manager()
+  # Change working dir
+  import os
+  os.chdir("biobb_wf_dna_helparms/biobb_wf_dna_helparms/notebooks/abc_setup")
+  print(f"📂 New working directory: {os.getcwd()}")
+```
+
+<a id="input"></a>
+## Input parameters
+**Input parameters** needed:
+ - **seq**: Sequence of the DNA structure (e.g. CGCGAATTCGCG)
+ - **seq_comp**: Complementary sequence of the given DNA structure (e.g. CGCGAATTCGCG)
+ 
+ - **traj**: Trajectory for a 500ns Drew Dickerson Dodecamer MD simulation (taken from [BigNASim](https://mmb.irbbarcelona.org/BIGNASim/)) 
+ - **top**: Associated topology for the MD trajectory 
 
 ```python
 # Auxiliary libraries
@@ -70,16 +121,6 @@ from IPython.display import Image
 import ipywidgets
 
 ```
-
-<a id="input"></a>
-## Input parameters
-**Input parameters** needed:
- - **seq**: Sequence of the DNA structure (e.g. CGCGAATTCGCG)
- - **seq_comp**: Complementary sequence of the given DNA structure (e.g. CGCGAATTCGCG)
- 
- - **traj**: Trajectory for a 500ns Drew Dickerson Dodecamer MD simulation (taken from [BigNASim](https://mmb.irbbarcelona.org/BIGNASim/)) 
- - **top**: Associated topology for the MD trajectory 
-
 
 ```python
 # Input parameters
@@ -146,7 +187,9 @@ curves_out_cda = "curves.out.cda"
 
 prop = {
     's1range' : '1:12',
-    's2range' : '24:13'
+    's2range' : '24:13',
+    # uncomment when running in google colab
+    # 'stdlib_path': '.curvesplus/standard'
 }
 
 biobb_curves(

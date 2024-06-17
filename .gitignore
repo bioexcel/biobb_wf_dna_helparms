@@ -20,6 +20,7 @@ log*.*
 .ipynb_checkpoints/
 biobb_wf_dna_helparms/notebooks/*/
 !biobb_wf_dna_helparms/notebooks/TRAJ/
+!biobb_wf_dna_helparms/notebooks/.curvesplus/
 biobb_wf_dna_helparms/notebooks/*.jpg
 biobb_wf_dna_helparms/notebooks/*.gif
 biobb_wf_dna_helparms/notebooks/*.web.ipynb

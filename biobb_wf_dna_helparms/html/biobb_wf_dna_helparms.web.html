@@ -14565,32 +14565,77 @@ a.anchor-link {
 <hr>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Auxiliary libraries</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">PurePath</span>
-<span class="kn">import</span> <span class="nn">zipfile</span>
-<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
 </div>
 
-</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+  <div class="jp-Cell-inputWrapper" tabindex="0">
+  <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+  </div>
+  <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+  </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+  <h2 id="Initializing-colab">Initializing colab<a class="anchor-link" href="#Initializing-colab">¶</a></h2><p>The two cells below are used only in case this notebook is executed via <strong>Google Colab</strong>. Take into account that, for running conda on <strong>Google Colab</strong>, the <strong>condacolab</strong> library must be installed. As <a href="https://pypi.org/project/condacolab/">explained here</a>, the installation requires a <strong>kernel restart</strong>, so when running this notebook in <strong>Google Colab</strong>, don't run all cells until this <strong>installation</strong> is properly <strong>finished</strong> and the <strong>kernel</strong> has <strong>restarted</strong>.</p>
+  </div>
+  </div>
+  </div>
+  </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+  <div class="jp-Cell-inputWrapper" tabindex="0">
+  <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+  </div>
+  <div class="jp-InputArea jp-Cell-inputArea">
+  <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+  <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+  <div class="cm-editor cm-s-jupyter">
+  <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Only executed when using google colab</span>
+  <span class="kn">import</span> <span class="nn">sys</span>
+  <span class="k">if</span> <span class="s1">'google.colab'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">subprocess</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"conda"</span><span class="p">,</span> <span class="s2">"-V"</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+      <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">"-m"</span><span class="p">,</span> <span class="s2">"pip"</span><span class="p">,</span> <span class="s2">"install"</span><span class="p">,</span> <span class="s2">"condacolab"</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="kn">import</span> <span class="nn">condacolab</span>
+      <span class="n">condacolab</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+      <span class="c1"># Clone repository</span>
+      <span class="n">repo_URL</span> <span class="o">=</span> <span class="s2">"https://github.com/bioexcel/biobb_wf_dna_helparms.git"</span>
+      <span class="n">repo_name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">repo_URL</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">repo_name</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"mamba"</span><span class="p">,</span> <span class="s2">"install"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"git"</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"git"</span><span class="p">,</span> <span class="s2">"clone"</span><span class="p">,</span> <span class="n">repo_URL</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"⏬ Repository properly cloned."</span><span class="p">)</span>
+      <span class="c1"># Install environment</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"⏳ Creating environment..."</span><span class="p">)</span>
+      <span class="n">env_file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">repo_name</span><span class="si">}</span><span class="s2">/conda_env/environment.yml"</span>
+      <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"mamba"</span><span class="p">,</span> <span class="s2">"env"</span><span class="p">,</span> <span class="s2">"update"</span><span class="p">,</span> <span class="s2">"-n"</span><span class="p">,</span> <span class="s2">"base"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="n">env_file_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"👍 Conda environment successfully created and updated."</span><span class="p">)</span>
+  </pre></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+  <div class="jp-Cell-inputWrapper" tabindex="0">
+  <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+  </div>
+  <div class="jp-InputArea jp-Cell-inputArea">
+  <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+  <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+  <div class="cm-editor cm-s-jupyter">
+  <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Enable widgets for colab</span>
+  <span class="k">if</span> <span class="s1">'google.colab'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+    <span class="c1"># Change working dir</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">"biobb_wf_dna_helparms/biobb_wf_dna_helparms/notebooks"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"📂 New working directory: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+  </pre></div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><a id="input"></a></p>
@@ -14605,7 +14650,34 @@ a.anchor-link {
 </ul>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+  <div class="jp-Cell-inputWrapper">
+  <div class="jp-InputArea jp-Cell-inputArea">
+  <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+  <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+       <div class="CodeMirror cm-s-jupyter">
+  <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Auxiliary libraries</span>
+  
+  <span class="kn">import</span> <span class="nn">os</span>
+  <span class="kn">import</span> <span class="nn">shutil</span>
+  <span class="kn">import</span> <span class="nn">glob</span>
+  <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">PurePath</span>
+  <span class="kn">import</span> <span class="nn">zipfile</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+  <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+  <span class="kn">import</span> <span class="nn">ipywidgets</span>
+  </pre></div>
+  
+       </div>
+  </div>
+  </div>
+  </div>
+  
+  </div>
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
@@ -14685,7 +14757,9 @@ a.anchor-link {
 
 <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;s1range&#39;</span> <span class="p">:</span> <span class="s1">&#39;1:12&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;s2range&#39;</span> <span class="p">:</span> <span class="s1">&#39;24:13&#39;</span>
+    <span class="s1">&#39;s2range&#39;</span> <span class="p">:</span> <span class="s1">&#39;24:13&#39;</span><span class="p">,</span>
+    <span class="c1"># uncomment when running in google colab</span>
+    <span class="c1"># 'stdlib_path': '.curvesplus/standard'</span>
 <span class="p">}</span>
 
 <span class="n">biobb_curves</span><span class="p">(</span>
